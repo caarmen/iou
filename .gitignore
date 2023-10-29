@@ -3,3 +3,4 @@
 reports/
 __pycache__/
 django.mo
+staticfiles/

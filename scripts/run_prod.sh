@@ -1,5 +1,6 @@
-python manage.py makemigrations && \
+export DEBUG=false
 python manage.py migrate && \
 python manage.py createadminuser && \
 django-admin compilemessages && \
-python manage.py runserver 8000
+python manage.py collectstatic --clear --no-input && \
+gunicorn iouproject.wsgi
