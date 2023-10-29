@@ -1,0 +1,29 @@
+<!doctype html>
+{% load i18n %}
+{% load iou_filters %}
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <title>{% translate "app_title" %}</title>
+</head>
+
+<body>
+  {{ debtor_debt_text |default_if_none:"" }}
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" />
+  </form>
+
+  list:<br>
+  <ul>
+  {% for debt in latest_debts %}
+    <li>{{ debt.debtor | person}}, {{debt.description |default_if_none:""}}, {{debt.amount }}</li>
+  {% endfor %}
+  </ul>
+</body>
+
+</html>
