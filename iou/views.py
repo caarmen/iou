@@ -1,6 +1,6 @@
 import os
 
-from django.forms import ChoiceField, ModelForm, RadioSelect
+from django.forms import ChoiceField, ModelForm
 from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from iou import service
 from iou.models import Debt, Person
 from iou.templatetags.iou_filters import person
+from iou.widgets import ButtonSelect
 
 
 class DebtForm(ModelForm):
@@ -17,7 +18,7 @@ class DebtForm(ModelForm):
             (Person.PERSON_1, os.getenv("PERSON_1_NAME", "Person 1")),
             (Person.PERSON_2, os.getenv("PERSON_2_NAME", "Person 2")),
         ),
-        widget=RadioSelect,
+        widget=ButtonSelect,
         label=Debt.debtor.field.verbose_name,
     )
 
