@@ -8,21 +8,22 @@
   <meta charset="utf-8" />
   <title>{% translate "app_title" %}</title>
   <link rel="icon" href="{% static 'iou/images/favicon.ico' %}" type="image/x-icon"/>
+  <link rel="stylesheet" href="{% static 'iou/css/iou.css' %}"/>
 </head>
 
 <body>
-  {{ debtor_debt_text |default_if_none:"" }}
   <form action="" method="post">
     {% csrf_token %}
     <table>
-    {{ form.as_table }}
+    {{ form }}
     </table>
   </form>
 
-  list:<br>
+  <h2>{{ debtor_debt_text |default_if_none:"" }}</h2>
+  <h2>{% translate "latest_debts" %}</h2>
   <ul>
-  {% for debt in latest_debts %}
-    <li>{{ debt.debtor | person}}, {{debt.description |default_if_none:""}}, {{debt.amount }}</li>
+  {% for latest_debt_text in latest_debts_text %}
+    <li>{{ latest_debt_text }}</li>
   {% endfor %}
   </ul>
 </body>

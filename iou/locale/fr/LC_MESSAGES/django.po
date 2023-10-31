@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 23:07+0100\n"
+"POT-Creation-Date: 2023-11-01 14:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,10 +38,34 @@ msgstr "Date de création"
 msgid "model_debt_name"
 msgstr "Dette"
 
-#: templates/iou/index.html:8
+#: templates/iou/index.html:9
 msgid "app_title"
 msgstr "IOU"
 
-#: views.py:39
-msgid "who_owes_what"
+#: templates/iou/index.html:23
+msgid "latest_debts"
+msgstr "🔎 Dernières dettes"
+
+#: views.py:19
+msgid "hint_amount"
+msgstr "🔍 Saisir le montant"
+
+#: views.py:20
+msgid "hint_description"
+msgstr "🔍 Entrer une description"
+
+#: views.py:21
+msgid "label_description"
+msgstr "Description (Optionelle)"
+
+#: views.py:47
+msgid "debt_list_item_with_description"
+msgstr "{} doit {:0.2f} ({})"
+
+#: views.py:53
+msgid "debt_list_item"
 msgstr "{} doit {:0.2f}"
+
+#: views.py:61
+msgid "who_owes_what"
+msgstr "💰 {} doit {:0.2f}"
