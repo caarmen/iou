@@ -2,6 +2,8 @@ body {
     background-color: #F0F4FF;
     font-family: system-ui, Roboto, Arial, ui-sans-serif;
     padding: 1rem;
+    max-width: 500px;
+    margin:auto;
 }
 
 form label {
@@ -28,11 +30,10 @@ ul {
 li {
     color: #808080;
     line-height: 1.5rem;
+    justify-content: space-between;
+    display: flex;
 }
-li:before {
-    content: "• ";
-    font-size: 1.5em;
-}
+
 input, form button {
     border-color: #C0CCDA;
     border-radius: 6px;
@@ -88,6 +89,12 @@ form button:hover {
 form button[name=debtor][value=P1] {
     background-color: #FF7F50;
 }
+
 form button[name=debtor][value=P2] {
     background-color: #32CD32;
+}
+
+.timestamp {
+    font-size: 0.75em;
+    opacity: 0.75;
 }

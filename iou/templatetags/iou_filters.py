@@ -1,24 +1,11 @@
-import os
-
-from babel.numbers import format_compact_currency
 from django import template
-from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import to_locale
 
-from iou.models import Debt, Person
+from iou.formatters import money, person
+from iou.models import Debt
 from iou.service import NetDebt
 
 register = template.Library()
-
-
-@register.filter(name="person")
-def person(value: Person) -> str:
-    if value == Person.PERSON_1:
-        return os.environ["PERSON_1_NAME"]
-    if value == Person.PERSON_2:
-        return os.environ["PERSON_2_NAME"]
-    return value
 
 
 @register.filter(name="debt")
@@ -37,17 +24,9 @@ def debt(value: Debt) -> str:
 
 
 @register.filter(name="net_debt")
-def net_debt(value: NetDebt) -> str | None:
+def net_debt(value: NetDebt) -> str:
     return (
         _("who_owes_what").format(person(value.debtor), money(value.amount))
         if value
-        else None
-    )
-
-
-def money(value) -> str:
-    return format_compact_currency(
-        number=value,
-        currency=os.environ["CURRENCY_CODE"],
-        locale=to_locale(get_language()),
+        else ""
     )

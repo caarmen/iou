@@ -4,7 +4,6 @@ from django.urls import reverse
 
 from iou import service
 from iou.forms import DebtForm
-from iou.templatetags import iou_filters
 
 
 def index(request: HttpRequest):
@@ -18,12 +17,8 @@ def index(request: HttpRequest):
         request=request,
         template_name="iou/index.html",
         context={
-            "latest_debts_text": [
-                iou_filters.debt(x) for x in service.get_latest_debts()
-            ],
-            "net_debt_text": iou_filters.net_debt(
-                service.get_net_debt(),
-            ),
+            "latest_debts": service.get_latest_debts(),
+            "net_debt": service.get_net_debt(),
             "form": DebtForm(),
         },
     )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-01 16:10+0100\n"
+"POT-Creation-Date: 2023-11-01 17:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,22 +46,22 @@ msgstr "Created at"
 msgid "model_debt_name"
 msgstr "Debt"
 
-#: templates/iou/index.html:9
+#: templates/iou/index.html:10
 msgid "app_title"
 msgstr "IOU app"
 
-#: templates/iou/index.html:23
+#: templates/iou/index.html:24
 msgid "latest_debts"
 msgstr "🔎 Latest debts"
 
-#: templatetags/iou_filters.py:27
+#: templatetags/iou_filters.py:14
 msgid "debt_list_item_with_description"
 msgstr "{0} owes {1} ({2})"
 
-#: templatetags/iou_filters.py:33
+#: templatetags/iou_filters.py:20
 msgid "debt_list_item"
 msgstr "{0} owes {1}"
 
-#: templatetags/iou_filters.py:42
+#: templatetags/iou_filters.py:29
 msgid "who_owes_what"
 msgstr "💰 {0} owes {1}"
