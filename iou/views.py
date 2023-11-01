@@ -1,4 +1,4 @@
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -11,7 +11,10 @@ def index(request: HttpRequest):
         form = DebtForm(request.POST)
         if form.is_valid():
             form.save()
-        return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            # If we get here, it's because the user is bypassing our form
+            return JsonResponse(form.errors, status=400)
 
     return render(
         request=request,
