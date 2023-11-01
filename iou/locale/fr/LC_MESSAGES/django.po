@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-01 20:33+0100\n"
+"POT-Creation-Date: 2023-11-01 22:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "Dette"
 msgid "app_title"
 msgstr "IOU"
 
-#: templates/iou/index.html:25
+#: templates/iou/index.html:31
 msgid "latest_debts"
 msgstr "🔎 Dernières dettes"
 
