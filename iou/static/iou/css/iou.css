@@ -1,0 +1,86 @@
+body {
+    background-color: #F0F4FF;
+    font-family: system-ui, Roboto, Arial, ui-sans-serif;
+    padding: 1rem;
+}
+
+form label {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: rgb(9,9,11);
+}
+
+form div {
+    margin-top: 16px;
+}
+
+h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+li {
+    color: #808080;
+    line-height: 1.5rem;
+}
+input, form button {
+    border-color: #C0CCDA;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px ;
+    box-sizing: border-box;
+    font-size: 0.875rem;
+    font-weight: 400;
+    height: 2.5rem;
+    line-height: 1.25rem;
+    margin-top: 8px;
+    outline-width: 2px;
+    outline-offset: 2px;
+    padding-bottom: 0.5rem;
+    padding-inline: 12px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+input[type=text], input[type=number] {
+    width:100%;
+}
+
+#id_debtor {
+    justify-content: space-between;
+    display: flex;
+}
+
+#id_debtor div {
+    display: flex;
+
+}
+
+form button {
+    color: white;
+    border-color: rgb(228, 228, 231);
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+form button::after {
+    content: "👉";
+    margin-left: 10px;
+}
+
+form button:hover {
+    background-color: rgb(244, 244, 245) !important;
+    color: rgb(9, 9, 11);
+}
+
+form button[name=debtor][value=P1] {
+    background-color: #FF7F50;
+}
+form button[name=debtor][value=P2] {
+    background-color: #32CD32;
+}
