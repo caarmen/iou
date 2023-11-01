@@ -37,11 +37,11 @@ def debt(value: Debt) -> str:
 
 
 @register.filter(name="net_debt")
-def net_debt(value: NetDebt) -> str | None:
+def net_debt(value: NetDebt) -> str:
     return (
         _("who_owes_what").format(person(value.debtor), money(value.amount))
         if value
-        else None
+        else ""
     )
 
 

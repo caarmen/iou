@@ -1,6 +1,7 @@
 <!doctype html>
 {% load i18n %}
 {% load static %}
+{% load humanize %}
 {% load iou_filters %}
 <html lang="en-US">
 
@@ -19,11 +20,11 @@
     </table>
   </form>
 
-  <h2>{{ net_debt_text |default_if_none:"" }}</h2>
+  <h2>{{ net_debt | net_debt }}</h2>
   <h2>{% translate "latest_debts" %}</h2>
   <ul>
-  {% for latest_debt_text in latest_debts_text %}
-    <li>{{ latest_debt_text }}</li>
+  {% for latest_debt in latest_debts %}
+    <li>{{ latest_debt | debt }}<span class="timestamp">{{ latest_debt.created_at | naturalday }}</span></li>
   {% endfor %}
   </ul>
 </body>
