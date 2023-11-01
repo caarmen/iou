@@ -25,3 +25,6 @@ def index(request: HttpRequest):
             "form": DebtForm(),
         },
     )
+
+def webmanifest(request: HttpRequest):
+    return render(request, template_name="iou/site.webmanifest")
