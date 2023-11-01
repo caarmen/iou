@@ -19,7 +19,7 @@
     </table>
   </form>
 
-  <h2>{{ debtor_debt_text |default_if_none:"" }}</h2>
+  <h2>{{ net_debt_text |default_if_none:"" }}</h2>
   <h2>{% translate "latest_debts" %}</h2>
   <ul>
   {% for latest_debt_text in latest_debts_text %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-01 14:20+0100\n"
+"POT-Creation-Date: 2023-11-01 14:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: forms.py:12
+msgid "hint_amount"
+msgstr "🔍 Saisir le montant"
+
+#: forms.py:13
+msgid "hint_description"
+msgstr "🔍 Entrer une description"
+
+#: forms.py:14
+msgid "label_description"
+msgstr "Description (Optionelle)"
 
 #: models.py:13
 msgid "model_amount_name"
@@ -46,26 +58,14 @@ msgstr "IOU"
 msgid "latest_debts"
 msgstr "🔎 Dernières dettes"
 
-#: views.py:19
-msgid "hint_amount"
-msgstr "🔍 Saisir le montant"
-
-#: views.py:20
-msgid "hint_description"
-msgstr "🔍 Entrer une description"
-
-#: views.py:21
-msgid "label_description"
-msgstr "Description (Optionelle)"
-
-#: views.py:47
+#: templatetags/iou_filters.py:24
 msgid "debt_list_item_with_description"
 msgstr "{} doit {:0.2f} ({})"
 
-#: views.py:53
+#: templatetags/iou_filters.py:30
 msgid "debt_list_item"
 msgstr "{} doit {:0.2f}"
 
-#: views.py:61
+#: templatetags/iou_filters.py:39
 msgid "who_owes_what"
 msgstr "💰 {} doit {:0.2f}"
