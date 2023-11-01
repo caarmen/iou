@@ -26,8 +26,5 @@ class DebtAdmin(admin.ModelAdmin):
 
     get_debtor_display.short_description = Debt.debtor.field.verbose_name
 
-    def has_change_permission(self, request, obj=None):
-        return False  # Disable the ability to change existing objects
-
 
 admin.site.register(Debt, DebtAdmin)
