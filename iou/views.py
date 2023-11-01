@@ -24,6 +24,6 @@ def index(request: HttpRequest):
             "net_debt_text": iou_filters.net_debt(
                 service.get_net_debt(),
             ),
-            "form": DebtForm(label_suffix=""),
+            "form": DebtForm(),
         },
     )

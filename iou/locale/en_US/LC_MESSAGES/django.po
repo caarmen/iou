@@ -20,15 +20,11 @@ msgstr ""
 
 #: forms.py:12
 msgid "hint_amount"
-msgstr "🔍 Enter the amount"
+msgstr "💸 Amount"
 
 #: forms.py:13
 msgid "hint_description"
-msgstr "🔍 Enter a description"
-
-#: forms.py:14
-msgid "label_description"
-msgstr "Description (Optional)"
+msgstr "📝 Description (Optionelle)"
 
 #: models.py:13
 msgid "model_amount_name"

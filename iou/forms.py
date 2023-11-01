@@ -11,7 +11,8 @@ class DebtForm(ModelForm):
         super(ModelForm, self).__init__(*args, **kwargs)
         self.fields["amount"].widget.attrs["placeholder"] = _("hint_amount")
         self.fields["description"].widget.attrs["placeholder"] = _("hint_description")
-        self.fields["description"].label = _("label_description")
+        for field in self.fields.values():
+            field.label = ""
 
     debtor = ChoiceField(
         choices=(
@@ -19,7 +20,6 @@ class DebtForm(ModelForm):
             (Person.PERSON_2, iou_filters.person(Person.PERSON_2)),
         ),
         widget=ButtonSelect,
-        label=False,
     )
 
     class Meta:
