@@ -2,8 +2,6 @@ body {
     background-color: #F0F4FF;
     font-family: system-ui, Roboto, Arial, ui-sans-serif;
     padding: 1rem;
-    max-width: 500px;
-    margin:auto;
 }
 
 form label {
