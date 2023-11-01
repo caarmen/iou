@@ -56,12 +56,12 @@ msgstr "🔎 Dernières dettes"
 
 #: templatetags/iou_filters.py:24
 msgid "debt_list_item_with_description"
-msgstr "{} doit {:0.2f} ({})"
+msgstr "{0} doit {1:0.2f} ({2})"
 
 #: templatetags/iou_filters.py:30
 msgid "debt_list_item"
-msgstr "{} doit {:0.2f}"
+msgstr "{0} doit {1:0.2f}"
 
 #: templatetags/iou_filters.py:39
 msgid "who_owes_what"
-msgstr "💰 {} doit {:0.2f}"
+msgstr "💰 {0} doit {1:0.2f}"
