@@ -18,13 +18,20 @@ h2 {
     font-size: 1.125rem;
     font-weight: 600;
     padding-top: 1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+}
+
+ul {
+    padding-inline: 0px;
+    list-style-type: none;
 }
 
 li {
     color: #808080;
     line-height: 1.5rem;
+}
+li:before {
+    content: "• ";
+    font-size: 1.5em;
 }
 input, form button {
     border-color: #C0CCDA;

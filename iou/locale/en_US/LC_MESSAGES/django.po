@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-01 14:42+0100\n"
+"POT-Creation-Date: 2023-11-01 16:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,11 @@ msgstr ""
 
 #: forms.py:12
 msgid "hint_amount"
-msgstr "🔍 Enter the amount"
+msgstr "💸 Amount"
 
 #: forms.py:13
 msgid "hint_description"
-msgstr "🔍 Enter a description"
-
-#: forms.py:14
-msgid "label_description"
-msgstr "Description (Optional)"
+msgstr "📝 Description (optional)"
 
 #: models.py:13
 msgid "model_amount_name"
@@ -58,14 +54,14 @@ msgstr "IOU app"
 msgid "latest_debts"
 msgstr "🔎 Latest debts"
 
-#: templatetags/iou_filters.py:24
+#: templatetags/iou_filters.py:27
 msgid "debt_list_item_with_description"
-msgstr "{} owes {:0.2f} ({})"
+msgstr "{0} owes {1} ({2})"
 
-#: templatetags/iou_filters.py:30
+#: templatetags/iou_filters.py:33
 msgid "debt_list_item"
-msgstr "{} owes {:0.2f}"
+msgstr "{0} owes {1}"
 
-#: templatetags/iou_filters.py:39
+#: templatetags/iou_filters.py:42
 msgid "who_owes_what"
-msgstr "💰 {} owes {:0.2f}"
+msgstr "💰 {0} owes {1}"
