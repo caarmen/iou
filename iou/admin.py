@@ -1,7 +1,6 @@
-import os
-
 from django.contrib import admin
 
+from iou.formatters import person
 from iou.models import Debt, Person
 
 
@@ -17,17 +16,13 @@ class DebtAdmin(admin.ModelAdmin):
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "debtor":
             kwargs["choices"] = (
-                (Person.PERSON_1, os.getenv("PERSON_1_NAME", "Person 1")),
-                (Person.PERSON_2, os.getenv("PERSON_2_NAME", "Person 2")),
+                (Person.PERSON_1, person(Person.PERSON_1)),
+                (Person.PERSON_2, person(Person.PERSON_2)),
             )
         return super().formfield_for_choice_field(db_field, request, **kwargs)
 
     def get_debtor_display(self, obj: Debt) -> str | None:
-        if obj.debtor == Person.PERSON_1:
-            return os.environ["PERSON_1_NAME"]
-        if obj.debtor == Person.PERSON_2:
-            return os.environ["PERSON_2_NAME"]
-        return obj.debtor
+        return person(obj.debtor)
 
     get_debtor_display.short_description = Debt.debtor.field.verbose_name
 

@@ -1,8 +1,8 @@
 from django.forms import ChoiceField, ModelForm
 from django.utils.translation import gettext_lazy as _
 
+from iou.formatters import person
 from iou.models import Debt, Person
-from iou.templatetags import iou_filters
 from iou.widgets import ButtonSelect
 
 
@@ -16,8 +16,8 @@ class DebtForm(ModelForm):
 
     debtor = ChoiceField(
         choices=(
-            (Person.PERSON_1, iou_filters.person(Person.PERSON_1)),
-            (Person.PERSON_2, iou_filters.person(Person.PERSON_2)),
+            (Person.PERSON_1, person(Person.PERSON_1)),
+            (Person.PERSON_2, person(Person.PERSON_2)),
         ),
         widget=ButtonSelect,
     )
