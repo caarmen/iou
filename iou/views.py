@@ -26,5 +26,6 @@ def index(request: HttpRequest):
         },
     )
 
+
 def webmanifest(request: HttpRequest):
     return render(request, template_name="iou/site.webmanifest")
