@@ -4,9 +4,25 @@ from typing import Iterable
 import pytest
 from django.test import Client
 
+from iou.forms import DebtForm
 from iou.models import Debt, Person
 from iou.service import NetDebt
 from iou.tests.factories import DebtFactory
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    ids=["min", "max", "step"],
+    argnames=["attr_name", "expected_value"],
+    argvalues=[
+        ["min", 0.01],
+        ["max", 999999.99],
+        ["step", "0.01"],
+    ],
+)
+def test_form_amount_widget_attrs(attr_name, expected_value):
+    form = DebtForm()
+    assert form.fields["amount"].widget.attrs[attr_name] == expected_value
 
 
 @pytest.mark.django_db
