@@ -1,13 +1,42 @@
-body {
-    background-color: #F0F4FF;
-    font-family: system-ui, Roboto, Arial, ui-sans-serif;
-    padding: 1rem;
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: #F0F4FF;
+        --color: #000;
+        --button-background-color-person-1: #FF7F50;
+        --button-background-color-person-2: #32CD32;
+        --button-background-color-hover: #F4F4F5;
+        --button-color: #000;
+        --button-color-hover: #09090B;
+        --button-border-color: #E4E4E7;
+        --input-border-color: #C0CCDA;
+        --input-box-shadow-color: #0000000d;
+        --li-color: #2E2E2E;
+        --li-odd-child-brightness: 0.95;
+    }
 }
 
-form label {
-    font-weight: 500;
-    font-size: 0.875rem;
-    color: rgb(9,9,11);
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0A0F14;
+        --color: #FFF;
+        --button-background-color-person-1: #FF6347;
+        --button-background-color-person-2: #228B22;
+        --button-background-color-hover: #2A2A2E;
+        --button-color: #000;
+        --button-color-hover: #F6F6F6;
+        --button-border-color: #8F9BB3;
+        --input-border-color: #8F9BB3;
+        --input-box-shadow-color: #00000099;
+        --li-color: #B0B0B0;
+        --li-odd-child-brightness: 1.5;
+    }
+}
+
+body {
+    background-color: var(--background);
+    color: var(--color);
+    font-family: system-ui, Roboto, Arial, ui-sans-serif;
+    padding: 1rem;
 }
 
 form div {
@@ -26,18 +55,24 @@ ul {
 }
 
 li {
-    color: #808080;
-    line-height: 1.5rem;
+    color: var(--li-color);
     justify-content: space-between;
     display: flex;
+    padding: 16px 16px;
+    align-items: center;
 }
 
-input, form button {
-    border-color: #C0CCDA;
+li:nth-child(odd) {
+    backdrop-filter: brightness(var(--li-odd-child-brightness));
+}
+
+input,
+form button {
+    border-color: var(--input-border-color);
     border-radius: 6px;
     border-style: solid;
     border-width: 1px;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px ;
+    box-shadow: var(--input-box-shadow-color) 0px 1px 2px 0px;
     box-sizing: border-box;
     font-size: 0.875rem;
     font-weight: 400;
@@ -53,8 +88,9 @@ input, form button {
     padding-top: 0.5rem;
 }
 
-input[type=text], input[type=number] {
-    width:100%;
+input[type=text],
+input[type=number] {
+    width: 100%;
 }
 
 #id_debtor {
@@ -68,31 +104,34 @@ input[type=text], input[type=number] {
 }
 
 form button {
-    color: white;
-    border-color: rgb(228, 228, 231);
+    color: var(--button-color);
+    border-color: var(--button-border-color);
     cursor: pointer;
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
 form button::after {
     content: "👉";
     margin-left: 10px;
 }
 
 form button:hover {
-    background-color: rgb(244, 244, 245) !important;
-    color: rgb(9, 9, 11);
+    background-color: var(--button-background-color-hover) !important;
+    color: var(--button-color-hover);
 }
 
 form button[name=debtor][value=P1] {
-    background-color: #FF7F50;
+    background-color: var(--button-background-color-person-1);
 }
 
 form button[name=debtor][value=P2] {
-    background-color: #32CD32;
+    background-color: var(--button-background-color-person-2);
 }
 
 .timestamp {
     font-size: 0.75em;
     opacity: 0.75;
+    white-space: nowrap;
+    padding-inline-start: 1em;
 }
