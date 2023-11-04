@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.core import validators
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -8,8 +10,21 @@ class Person(models.TextChoices):
     PERSON_2 = ("P2", "Person 2")
 
 
+class PositiveDecimalField(models.DecimalField):
+    def formfield(self, **kwargs: Any) -> Any:
+        return super().formfield(
+            min_value=pow(10, -self.decimal_places),
+            max_value=float(
+                "9" * (self.max_digits - self.decimal_places)
+                + "."
+                + "9" * self.decimal_places
+            ),
+            **kwargs,
+        )
+
+
 class Debt(models.Model):
-    amount = models.DecimalField(
+    amount = PositiveDecimalField(
         verbose_name=_("model_amount_name"),
         decimal_places=2,
         max_digits=8,
