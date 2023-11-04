@@ -22,6 +22,9 @@ from iou.tests.factories import DebtFactory
     ],
 )
 def test_form_amount_widget_attrs(attr_name, expected_value):
+    """
+    Validate that the amount form field has the expected widget attributes
+    """
     form = DebtForm()
     assert form.fields["amount"].widget.attrs[attr_name] == expected_value
 
