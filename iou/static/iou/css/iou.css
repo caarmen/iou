@@ -27,9 +27,14 @@ ul {
 
 li {
     color: #808080;
-    line-height: 1.5rem;
     justify-content: space-between;
     display: flex;
+    padding: 16px 16px;
+    align-items: center;
+}
+
+li:nth-child(odd) {
+    backdrop-filter: brightness(0.95);
 }
 
 input, form button {
@@ -95,4 +100,6 @@ form button[name=debtor][value=P2] {
 .timestamp {
     font-size: 0.75em;
     opacity: 0.75;
+    white-space: nowrap;
+    padding-inline-start: 1em;
 }

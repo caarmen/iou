@@ -32,7 +32,7 @@
   <h2>{% translate "latest_debts" %}</h2>
   <ul>
   {% for latest_debt in latest_debts %}
-    <li>{{ latest_debt | debt }}<span class="timestamp">{{ latest_debt.created_at | naturalday }}</span></li>
+    <li>{{ latest_debt | debt }}<span class="timestamp">{{ latest_debt.created_at | naturalday:"MONTH_DAY_FORMAT" }}</span></li>
   {% endfor %}
   </ul>
 </body>
