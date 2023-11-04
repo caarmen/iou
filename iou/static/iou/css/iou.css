@@ -2,10 +2,10 @@
     :root {
         --background: #F0F4FF;
         --color: #000;
-        --button-background-color-person-1: #FF7F50;
-        --button-background-color-person-2: #32CD32;
+        --button-background-color-person-1: #AD4F00;
+        --button-background-color-person-2: #006600;
         --button-background-color-hover: #F4F4F5;
-        --button-color: #000;
+        --button-color: #FFF;
         --button-color-hover: #09090B;
         --button-border-color: #E4E4E7;
         --input-border-color: #C0CCDA;
@@ -19,10 +19,10 @@
     :root {
         --background: #0A0F14;
         --color: #FFF;
-        --button-background-color-person-1: #FF6347;
-        --button-background-color-person-2: #228B22;
+        --button-background-color-person-1: #AD4F00;
+        --button-background-color-person-2: #006600;
         --button-background-color-hover: #2A2A2E;
-        --button-color: #000;
+        --button-color: #FFF;
         --button-color-hover: #F6F6F6;
         --button-border-color: #8F9BB3;
         --input-border-color: #8F9BB3;
@@ -74,7 +74,7 @@ form button {
     border-width: 1px;
     box-shadow: var(--input-box-shadow-color) 0px 1px 2px 0px;
     box-sizing: border-box;
-    font-size: 0.875rem;
+    font-size: 1.2em;
     font-weight: 400;
     height: 2.5rem;
     line-height: 1.25rem;
@@ -109,6 +109,7 @@ form button {
     cursor: pointer;
     padding-left: 1rem;
     padding-right: 1rem;
+    font-weight: 700;
 }
 
 form button::after {
@@ -134,4 +135,9 @@ form button[name=debtor][value=P2] {
     opacity: 0.75;
     white-space: nowrap;
     padding-inline-start: 1em;
+}
+
+.net-debt {
+    font-size: 1.75em;
+    text-align: center;
 }

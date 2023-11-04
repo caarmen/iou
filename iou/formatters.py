@@ -20,4 +20,5 @@ def money(amount: Decimal) -> str:
         number=amount,
         currency=os.environ["CURRENCY_CODE"],
         locale=to_locale(get_language()),
+        fraction_digits=2,
     )

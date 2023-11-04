@@ -10,13 +10,13 @@
   <meta name="theme-color" content="#F0F4FF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% translate "app_title" %}</title>
-  <link rel="shortcut icon" href="{% static 'iou/images/favicon.ico' %}" type="image/x-icon"/>
+  <link rel="shortcut icon" href="{% static 'iou/images/favicon.ico' %}" type="image/x-icon" />
   <link rel="manifest" href="/iou/site.webmanifest">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'iou/images/apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'iou/images/favicon-32x32.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'iou/images/favicon-16x16.png' %}">
   <link rel="icon" type="image/png" sizes="512x512" href="{% static 'iou/images/android-chrome-512x512.png' %}">
-  <link rel="stylesheet" href="{% static 'iou/css/iou.css' %}"/>
+  <link rel="stylesheet" href="{% static 'iou/css/iou.css' %}" />
 
 </head>
 
@@ -24,16 +24,16 @@
   <form action="" method="post">
     {% csrf_token %}
     <table>
-    {{ form }}
+      {{ form }}
     </table>
   </form>
 
-  <h2>{{ net_debt | net_debt }}</h2>
+  <h2 class="net-debt">{{ net_debt | net_debt }}</h2>
   <h2>{% translate "latest_debts" %}</h2>
   <ul>
-  {% for latest_debt in latest_debts %}
+    {% for latest_debt in latest_debts %}
     <li>{{ latest_debt | debt }}<span class="timestamp">{{ latest_debt.created_at | naturalday:"MONTH_DAY_FORMAT" }}</span></li>
-  {% endfor %}
+    {% endfor %}
   </ul>
 </body>
 
