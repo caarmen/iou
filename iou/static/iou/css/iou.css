@@ -1,13 +1,22 @@
+:root {
+    --background: #F0F4FF;
+    --color: #000;
+    --button-background-color-person-1: #FF7F50;
+    --button-background-color-person-2: #32CD32;
+    --button-background-color-hover: #F4F4F5;
+    --button-color: #FFFFFF;
+    --button-color-hover: #09090B;
+    --button-border-color: #E4E4E7;
+    --input-border-color: #C0CCDA;
+    --input-box-shadow-color: #0000000d;
+    --li-color: #808080;
+    --li-odd-child-brightness: 0.95;
+}
 body {
-    background-color: #F0F4FF;
+    background-color: var(--background);
+    color: var(--color);
     font-family: system-ui, Roboto, Arial, ui-sans-serif;
     padding: 1rem;
-}
-
-form label {
-    font-weight: 500;
-    font-size: 0.875rem;
-    color: rgb(9,9,11);
 }
 
 form div {
@@ -26,7 +35,7 @@ ul {
 }
 
 li {
-    color: #808080;
+    color: var(--li-color);
     justify-content: space-between;
     display: flex;
     padding: 16px 16px;
@@ -34,15 +43,15 @@ li {
 }
 
 li:nth-child(odd) {
-    backdrop-filter: brightness(0.95);
+    backdrop-filter: brightness(var(--li-odd-child-brightness));
 }
 
 input, form button {
-    border-color: #C0CCDA;
+    border-color: var(--input-border-color);
     border-radius: 6px;
     border-style: solid;
     border-width: 1px;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px ;
+    box-shadow: var(--input-box-shadow-color) 0px 1px 2px 0px;
     box-sizing: border-box;
     font-size: 0.875rem;
     font-weight: 400;
@@ -73,8 +82,8 @@ input[type=text], input[type=number] {
 }
 
 form button {
-    color: white;
-    border-color: rgb(228, 228, 231);
+    color: var(--button-color);
+    border-color: var(--button-border-color);
     cursor: pointer;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -85,16 +94,16 @@ form button::after {
 }
 
 form button:hover {
-    background-color: rgb(244, 244, 245) !important;
-    color: rgb(9, 9, 11);
+    background-color: var(--button-background-color-hover) !important;
+    color: var(--button-color-hover);
 }
 
 form button[name=debtor][value=P1] {
-    background-color: #FF7F50;
+    background-color: var(--button-background-color-person-1);
 }
 
 form button[name=debtor][value=P2] {
-    background-color: #32CD32;
+    background-color: var(--button-background-color-person-2);
 }
 
 .timestamp {
