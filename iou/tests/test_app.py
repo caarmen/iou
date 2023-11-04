@@ -3,6 +3,7 @@ from typing import Iterable
 
 import pytest
 from django.test import Client
+from django.urls import reverse
 
 from iou.forms import DebtForm
 from iou.models import Debt, Person
@@ -41,7 +42,7 @@ def test_list_debts(
     debt_factory(debtor=Person.PERSON_1, amount=5.0)
     debt_factory(debtor=Person.PERSON_2, amount=7.5, description=None)
 
-    response = client.get("/iou/")
+    response = client.get(reverse("index"))
     assert response.status_code == 200
     latest_debts: Iterable[Debt] = response.context["latest_debts"]
 
@@ -74,7 +75,7 @@ def test_no_debts(
     Then the list of debts is empty
     And the net debt is None.
     """
-    response = client.get("/iou/")
+    response = client.get(reverse("index"))
     assert response.status_code == 200
     latest_debts: Iterable[Debt] = response.context["latest_debts"]
     assert len(latest_debts) == 0
@@ -99,7 +100,7 @@ def test_net_debt_zero(
     debt_factory(debtor=Person.PERSON_1, amount=5.0)
     debt_factory(debtor=Person.PERSON_2, amount=9.33, description=None)
 
-    response = client.get("/iou/")
+    response = client.get(reverse("index"))
     assert response.status_code == 200
     latest_debts: Iterable[Debt] = response.context["latest_debts"]
 
@@ -176,10 +177,10 @@ def test_add_debt(
     debts = Debt.objects.all()
     assert debts.count() == 0
 
-    response = client.post("/iou/", client_input)
+    response = client.post(reverse("index"), client_input)
 
     assert response.status_code == 302
-    assert response.url == "/iou/"
+    assert response.url == reverse("index")
 
     debts = Debt.objects.all()
     assert debts.count() == 1
@@ -259,7 +260,7 @@ def test_invalid_input(
     debts = Debt.objects.all()
     assert debts.count() == 0
 
-    response = client.post("/iou/", client_input)
+    response = client.post(reverse("index"), client_input)
 
     assert response.status_code == 400
     response_json: dict = response.json()
