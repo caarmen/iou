@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-04 16:19+0100\n"
+"POT-Creation-Date: 2023-11-05 14:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:12
+#: forms.py:15
 msgid "hint_amount"
 msgstr "💸 Amount"
 
-#: forms.py:13
+#: forms.py:16
 msgid "hint_description"
 msgstr "📝 Description (optional)"
 
@@ -46,11 +46,11 @@ msgstr "Created at"
 msgid "model_debt_name"
 msgstr "Debt"
 
-#: templates/iou/index.html:12
+#: templates/base.html:12
 msgid "app_title"
 msgstr "IOU app"
 
-#: templates/iou/index.html:32
+#: templates/iou/index.html:16
 msgid "latest_debts"
 msgstr "🔎 Latest debts"
 

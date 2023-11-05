@@ -3,12 +3,18 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from iou import service
-from iou.forms import DebtForm
+from iou.forms import DebtForm, DebtFormPreview
 
 
 def index(request: HttpRequest):
     if request.method == "POST":
         form = DebtForm(request.POST)
+        if "preview" in request.POST:
+            preview = DebtFormPreview(DebtForm)
+            response = preview.preview_post(request)
+            if response:
+                return response
+
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("index"))
