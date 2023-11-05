@@ -1,0 +1,11 @@
+{% extends 'iou/base.html' %}
+{% load i18n %}
+{%block title %}{% translate "Log in" %}{%endblock%}
+{%block content%}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="hidden" name="next" value="{%url 'index' %}">
+    <button type="submit">{% translate "Log in" %}</button>
+</form>
+{%endblock%}

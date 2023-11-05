@@ -52,4 +52,9 @@
   </li>
   {% endfor %}
 </ul>
+<form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{%url 'login' %}">
+  <button class="button--logout" type="submit">{% translate "Log out" %}</button>
+</form>
 {% endblock%}
