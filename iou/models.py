@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Any
 
 from django.core import validators
@@ -13,8 +14,8 @@ class Person(models.TextChoices):
 class PositiveDecimalField(models.DecimalField):
     def formfield(self, **kwargs: Any) -> Any:
         return super().formfield(
-            min_value=pow(10, -self.decimal_places),
-            max_value=float(
+            min_value=Decimal("0." + ((self.decimal_places - 1) * "0") + "1"),
+            max_value=Decimal(
                 "9" * (self.max_digits - self.decimal_places)
                 + "."
                 + "9" * self.decimal_places

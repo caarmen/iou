@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-11 15:40+0100\n"
+"POT-Creation-Date: 2023-11-11 16:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,23 +26,23 @@ msgstr "💸 Montant"
 msgid "hint_description"
 msgstr "📝 Description (optionelle)"
 
-#: models.py:28
+#: models.py:29
 msgid "model_amount_name"
 msgstr "Montant"
 
-#: models.py:36
+#: models.py:37
 msgid "model_description_name"
 msgstr "Description"
 
-#: models.py:43
+#: models.py:44
 msgid "model_debtor_name"
 msgstr "Débiteur/Débitrice"
 
-#: models.py:51
+#: models.py:52
 msgid "model_created_at_name"
 msgstr "Date de création"
 
-#: models.py:56
+#: models.py:57
 msgid "model_debt_name"
 msgstr "Dette"
 
