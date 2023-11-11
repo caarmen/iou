@@ -8,7 +8,13 @@ from iou.models import Debt, Person
 
 
 @pytest.mark.parametrize(
-    ids=["full data", "required data", "empty_description"],
+    ids=[
+        "full data",
+        "required data",
+        "empty_description",
+        "lower_limit",
+        "upper_limit",
+    ],
     argnames=[
         "client_input",
         "expected_debtor",
@@ -43,6 +49,24 @@ from iou.models import Debt, Person
             },
             Person.PERSON_1,
             42.3,
+            None,
+        ],
+        [
+            {
+                "debtor": Person.PERSON_1,
+                "amount": 0.01,
+            },
+            Person.PERSON_1,
+            0.01,
+            None,
+        ],
+        [
+            {
+                "debtor": Person.PERSON_1,
+                "amount": 999999.99,
+            },
+            Person.PERSON_1,
+            999999.99,
             None,
         ],
     ],
@@ -85,6 +109,8 @@ def test_add_debt(
         "string_amount",
         "negative_amount",
         "unknown_debtor",
+        "lower_limit",
+        "upper_limit",
     ],
     argnames=[
         "client_input",
@@ -129,6 +155,20 @@ def test_add_debt(
                 "amount": 5.2,
             },
             ["debtor"],
+        ],
+        [
+            {
+                "debtor": Person.PERSON_2,
+                "amount": 0.009,
+            },
+            ["amount"],
+        ],
+        [
+            {
+                "debtor": Person.PERSON_2,
+                "amount": 1000000.0,
+            },
+            ["amount"],
         ],
     ],
 )

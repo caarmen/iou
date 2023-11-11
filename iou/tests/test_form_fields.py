@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 import pytest
 
 from iou.forms import DebtForm
@@ -8,8 +10,8 @@ from iou.forms import DebtForm
     ids=["min", "max", "step"],
     argnames=["attr_name", "expected_value"],
     argvalues=[
-        ["min", 0.01],
-        ["max", 999999.99],
+        ["min", Decimal("0.01")],
+        ["max", Decimal("999999.99")],
         ["step", "0.01"],
     ],
 )
