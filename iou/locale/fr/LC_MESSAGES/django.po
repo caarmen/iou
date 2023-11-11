@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-05 23:40+0100\n"
+"POT-Creation-Date: 2023-11-11 15:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,32 +46,32 @@ msgstr "Date de création"
 msgid "model_debt_name"
 msgstr "Dette"
 
-#: templates/iou/index.html:12 templates/registration/login.html:11
+#: templates/iou/index.html:7
 msgid "app_title"
 msgstr "IOU"
 
-#: templates/iou/index.html:41
+#: templates/iou/index.html:29
 msgid "latest_debts"
 msgstr "🔎 Dernières dettes"
 
-#: templates/iou/index.html:45
+#: templates/iou/index.html:33
 msgid "dialog_cancel"
 msgstr "Annuler"
 
-#: templates/iou/index.html:46
+#: templates/iou/index.html:34
 msgid "dialog_ok"
 msgstr "Ok"
 
-#: templates/iou/index.html:53
+#: templates/iou/index.html:41
 #, python-format
 msgid "Delete %(debt_text)s?"
 msgstr "Supprimer &quot;%(debt_text)s&quot; ?"
 
-#: templates/iou/index.html:70
+#: templates/iou/index.html:58
 msgid "Log out"
 msgstr ""
 
-#: templates/registration/login.html:20 templates/registration/login.html:27
+#: templates/registration/login.html:3 templates/registration/login.html:9
 msgid "Log in"
 msgstr ""
 
