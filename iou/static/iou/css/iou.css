@@ -101,6 +101,7 @@ dialog {
 
 dialog::backdrop {
     backdrop-filter: blur(0.3em);
+    -webkit-backdrop-filter: blur(0.3em);
 }
 
 .dialog--message {
