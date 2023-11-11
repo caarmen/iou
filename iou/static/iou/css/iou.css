@@ -39,7 +39,7 @@ body {
     padding: 1rem;
 }
 
-form div {
+.amount-form div {
     margin-top: 16px;
 }
 
@@ -56,18 +56,70 @@ ul {
 
 li {
     color: var(--li-color);
-    justify-content: space-between;
-    display: flex;
-    padding: 16px 16px;
-    align-items: center;
+    padding-left: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 li:nth-child(odd) {
     backdrop-filter: brightness(var(--li-odd-child-brightness));
 }
 
+li form {
+    display: flex;
+    align-items: center;
+}
+
+.debt_list--item--amount {
+    flex-grow: 1;
+}
+
+.debt_list--item--delete button {
+    background-color: transparent;
+    border-style: none;
+    color: var(--li-color);
+    margin-top: 0px;
+}
+
+.debt_list--item--timestamp {
+    font-size: 0.75em;
+    opacity: 0.75;
+    white-space: nowrap;
+    padding-inline-start: 1em;
+}
+
+dialog {
+    border-color: var(--input-border-color);
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: var(--input-box-shadow-color) 0px 1px 2px 0px;
+    box-sizing: border-box;
+    background-color: var(--background);
+    color: var(--color);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(0.3em);
+}
+
+.dialog--message {
+    font-size: 1.2em;
+}
+
+.button-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.button-bar button {
+    margin-left: 8px;
+    font-size: 1em;
+}
+
 input,
-form button {
+button {
     border-color: var(--input-border-color);
     border-radius: 6px;
     border-style: solid;
@@ -86,6 +138,7 @@ form button {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     padding-top: 0.5rem;
+    cursor: pointer;
 }
 
 input[type=text],
@@ -103,7 +156,7 @@ input[type=number] {
 
 }
 
-form button {
+.amount-form button {
     color: var(--button-color);
     border-color: var(--button-border-color);
     cursor: pointer;
@@ -112,29 +165,22 @@ form button {
     font-weight: 700;
 }
 
-form button::after {
+.amount-form button::after {
     content: "👉";
     margin-left: 10px;
 }
 
-form button:hover {
+.amount-form button:hover {
     background-color: var(--button-background-color-hover) !important;
     color: var(--button-color-hover);
 }
 
-form button[name=debtor][value=P1] {
+.amount-form button[name=debtor][value=P1] {
     background-color: var(--button-background-color-person-1);
 }
 
-form button[name=debtor][value=P2] {
+.amount-form button[name=debtor][value=P2] {
     background-color: var(--button-background-color-person-2);
-}
-
-.timestamp {
-    font-size: 0.75em;
-    opacity: 0.75;
-    white-space: nowrap;
-    padding-inline-start: 1em;
 }
 
 .net-debt {

@@ -1,9 +1,10 @@
 from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from iou import service
 from iou.forms import DebtForm
+from iou.models import Debt
 
 
 def index(request: HttpRequest):
@@ -25,6 +26,13 @@ def index(request: HttpRequest):
             "form": DebtForm(),
         },
     )
+
+
+def delete(request: HttpRequest, debt_id):
+    if request.method == "POST":
+        get_object_or_404(Debt, id=debt_id).delete()
+
+    return HttpResponseRedirect(reverse("index"))
 
 
 def webmanifest(request: HttpRequest):

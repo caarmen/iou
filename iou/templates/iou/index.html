@@ -17,11 +17,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'iou/images/favicon-16x16.png' %}">
   <link rel="icon" type="image/png" sizes="512x512" href="{% static 'iou/images/android-chrome-512x512.png' %}">
   <link rel="stylesheet" href="{% static 'iou/css/iou.css' %}" />
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <script>
+    function openDialog(form, message) {
+      const dialog = document.getElementById('dialogBox');
+      dialog.querySelector(".dialog--message").textContent = message;
+      dialog.querySelector("#cancel").onclick = () => dialog.close();
+      dialog.querySelector("#submit").onclick = () => form.submit();
+      dialog.showModal();
+    }
+  </script>
 </head>
 
 <body>
-  <form action="" method="post">
+  <form class="amount-form" action="" method="post">
     {% csrf_token %}
     <table>
       {{ form }}
@@ -30,9 +39,29 @@
 
   <h2 class="net-debt">{{ net_debt | net_debt }}</h2>
   <h2>{% translate "latest_debts" %}</h2>
+  <dialog id="dialogBox" class="dialog-box">
+    <div class="dialog--message"></div>
+    <div class="button-bar">
+      <button id="cancel">{% translate "dialog_cancel" %}</button>
+      <button id="submit">{% translate "dialog_ok" %}</button>
+    </div>
+  </dialog>
   <ul>
     {% for latest_debt in latest_debts %}
-    <li>{{ latest_debt | debt }}<span class="timestamp">{{ latest_debt.created_at | naturalday:"MONTH_DAY_FORMAT" }}</span></li>
+    <li>
+      {% with debt_text=latest_debt|debt %}
+      {% blocktranslate asvar message_delete_confirm with debt_text=debt_text%}Delete {{ debt_text }}?{% endblocktranslate %}
+      <form method="post" class="debt-list-form" action="{%url 'delete' latest_debt.id %}" onsubmit="return false;">
+        {% csrf_token %}
+
+        <div class="debt_list--item--amount">{{ debt_text }}</div>
+        <div class="debt_list--item--timestamp">{{ latest_debt.created_at | naturalday:"MONTH_DAY_FORMAT" }}</div>
+        <div class="debt_list--item--delete">
+          <button class="material-symbols-outlined" onclick="openDialog(form, '{{message_delete_confirm}}')"> delete</button>
+        </div>
+      </form>
+      {% endwith %}
+    </li>
     {% endfor %}
   </ul>
 </body>
