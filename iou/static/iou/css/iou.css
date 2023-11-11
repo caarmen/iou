@@ -142,6 +142,7 @@ button {
 }
 
 input[type=text],
+input[type=password],
 input[type=number] {
     width: 100%;
 }
@@ -186,4 +187,11 @@ input[type=number] {
 .net-debt {
     font-size: 1.75em;
     text-align: center;
+}
+
+.button--logout {
+    font-size: 0.8em;
+    height: 2em;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }

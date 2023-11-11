@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -7,6 +8,7 @@ from iou.forms import DebtForm
 from iou.models import Debt
 
 
+@login_required
 def index(request: HttpRequest):
     if request.method == "POST":
         form = DebtForm(request.POST)
@@ -28,6 +30,7 @@ def index(request: HttpRequest):
     )
 
 
+@login_required
 def delete(request: HttpRequest, debt_id):
     if request.method == "POST":
         get_object_or_404(Debt, id=debt_id).delete()
