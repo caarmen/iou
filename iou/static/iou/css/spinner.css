@@ -12,6 +12,7 @@
     left: 0px;
 
     backdrop-filter: blur(0.3em);
+    -webkit-backdrop-filter: blur(0.3em);
 }
 
 .spinner.hidden {
