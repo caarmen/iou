@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-11 16:24+0100\n"
+"POT-Creation-Date: 2023-11-11 18:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,24 +50,24 @@ msgstr "Debt"
 msgid "app_title"
 msgstr "IOU app"
 
-#: templates/iou/index.html:29
+#: templates/iou/index.html:37
 msgid "latest_debts"
 msgstr "🔎 Latest debts"
 
-#: templates/iou/index.html:33
+#: templates/iou/index.html:41
 msgid "dialog_cancel"
 msgstr "Cancel"
 
-#: templates/iou/index.html:34
+#: templates/iou/index.html:42
 msgid "dialog_ok"
 msgstr "Ok"
 
-#: templates/iou/index.html:41
+#: templates/iou/index.html:49
 #, python-format
 msgid "Delete %(debt_text)s?"
 msgstr "Delete &quot;%(debt_text)s&quot;?"
 
-#: templates/iou/index.html:58
+#: templates/iou/index.html:66
 msgid "Log out"
 msgstr ""
 

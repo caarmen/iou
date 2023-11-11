@@ -11,20 +11,28 @@
     const dialog = document.getElementById('dialogBox');
     dialog.querySelector(".dialog--message").textContent = message;
     dialog.querySelector("#cancel").onclick = () => dialog.close();
-    dialog.querySelector("#submit").onclick = () => form.submit();
+    dialog.querySelector("#submit").onclick = () => {
+      dialog.close();
+      showSpinner();
+      form.submit();
+    }
     dialog.showModal();
+  }
+  function showSpinner() {
+    document.querySelector(".spinner").classList.remove("hidden");
   }
 </script>
 {% endblock%}
 
 {%block content%}
-<form class="amount-form" action="" method="post">
+<form class="amount-form" action="" method="post" onsubmit="showSpinner();">
   {% csrf_token %}
   <table>
     {{ form }}
   </table>
 </form>
 
+{% include "iou/spinner.html" %}
 <h2 class="net-debt">{{ net_debt | net_debt }}</h2>
 <h2>{% translate "latest_debts" %}</h2>
 <dialog id="dialogBox" class="dialog-box">
