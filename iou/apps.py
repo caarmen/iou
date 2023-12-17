@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 
 class IouConfig(AppConfig):
@@ -9,4 +9,4 @@ class IouConfig(AppConfig):
     def ready(self):
         from django.conf import settings
 
-        settings.LOGIN_URL = reverse("login")
+        settings.LOGIN_URL = reverse_lazy("login")
