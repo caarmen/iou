@@ -34,6 +34,8 @@ DEBUG = environ["DEBUG"].lower() == "true"
 ALLOWED_HOSTS = environ["ALLOWED_HOSTS"].split(",")
 CSRF_TRUSTED_ORIGINS = environ["CSRF_TRUSTED_ORIGINS"].split(",")
 
+SESSION_COOKIE_AGE = int(environ["SESSION_COOKIE_AGE"])
+
 
 # Application definition
 
