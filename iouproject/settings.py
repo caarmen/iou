@@ -79,6 +79,15 @@ TEMPLATES = [
             ],
         },
     },
+    {
+        "BACKEND": "django.template.backends.jinja2.Jinja2",
+        "DIRS": [
+            "iou/templates/iou/audit",
+        ],
+        "OPTIONS": {
+            "environment": "iou.jinja2.environment",
+        },
+    },
 ]
 
 WSGI_APPLICATION = "iouproject.wsgi.application"

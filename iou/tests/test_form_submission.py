@@ -5,6 +5,7 @@ from django.test import Client
 from django.urls import reverse
 
 from iou.models import Debt, Person
+from iou.tests.fixtures import MockSlackRequest
 
 
 @pytest.mark.parametrize(
@@ -78,6 +79,7 @@ def test_add_debt(
     expected_debtor: Person,
     expected_amount: float,
     expected_description: str | None,
+    mock_slack_request: MockSlackRequest,
 ):
     """
     When a client submits the form to create a Debt entry
@@ -99,6 +101,11 @@ def test_add_debt(
     assert debt.debtor == expected_debtor
     assert debt.amount == pytest.approx(Decimal(expected_amount))
     assert debt.description == expected_description
+
+    expected_slack_request_call_count = (
+        1 if mock_slack_request.is_slack_configured else 0
+    )
+    assert mock_slack_request.request.call_count == expected_slack_request_call_count
 
 
 @pytest.mark.parametrize(
@@ -177,6 +184,7 @@ def test_invalid_input(
     client: Client,
     client_input: dict,
     expected_error_keys: list[str],
+    mock_slack_request: MockSlackRequest,
 ):
     """
     When a client submits a form with invalid data to create a Debt,
@@ -195,3 +203,5 @@ def test_invalid_input(
 
     debts = Debt.objects.all()
     assert debts.count() == 0
+
+    assert mock_slack_request.request.call_count == 0

@@ -1,0 +1,9 @@
+*{{ audit_debt_event_title }}* {{ debt|debt}}
+{%if net_debt %}
+{{_("audit_net_debt")}}{{ net_debt|net_debt }}
+{% endif %}
+{{ _("audit_latest_debts") }}
+{% for latest_debt in latest_debts -%}
+{{"    • "}}{{ latest_debt.created_at|naturalday("MONTH_DAY_FORMAT")|safe }}: {{ latest_debt|debt}}
+{% if not loop.last %}{% endif %}
+{%- endfor %}

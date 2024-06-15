@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-11 18:51+0100\n"
+"POT-Creation-Date: 2024-06-16 23:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: audit/signals.py:19
+msgid "audit_debt_created"
+msgstr "Dette créée : "
+
+#: audit/signals.py:20
+msgid "audit_debt_deleted"
+msgstr "Dette supprimée: "
 
 #: forms.py:12
 msgid "hint_amount"
@@ -45,6 +53,14 @@ msgstr "Date de création"
 #: models.py:57
 msgid "model_debt_name"
 msgstr "Dette"
+
+#: templates/iou/audit/audit_debt_event.txt:3
+msgid "audit_net_debt"
+msgstr "Maintenant : "
+
+#: templates/iou/audit/audit_debt_event.txt:5
+msgid "audit_latest_debts"
+msgstr "Dernières dettes :"
 
 #: templates/iou/index.html:7
 msgid "app_title"

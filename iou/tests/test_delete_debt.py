@@ -6,12 +6,14 @@ from django.urls import reverse
 
 from iou.models import Debt, Person
 from iou.tests.factories import DebtFactory
+from iou.tests.fixtures import MockSlackRequest
 
 
 @pytest.mark.django_db
 def test_delete_debt_success(
     client: Client,
     debt_factory: DebtFactory,
+    mock_slack_request: MockSlackRequest,
 ):
     """
     When a client submits the form to delete an existing Debt entry
@@ -36,11 +38,18 @@ def test_delete_debt_success(
     assert debt.debtor == Person.PERSON_1
     assert debt.amount == pytest.approx(Decimal(5.0))
 
+    # two factory creations, one api deletion
+    expected_slack_request_call_count = (
+        3 if mock_slack_request.is_slack_configured else 0
+    )
+    assert mock_slack_request.request.call_count == expected_slack_request_call_count
+
 
 @pytest.mark.django_db
 def test_delete_unknown_debt_fail(
     client: Client,
     debt_factory: DebtFactory,
+    mock_slack_request: MockSlackRequest,
 ):
     """
     When a client submits the form to delete an inalid Debt entry
@@ -59,3 +68,9 @@ def test_delete_unknown_debt_fail(
 
     debts = Debt.objects.all()
     assert debts.count() == 2
+
+    # two factory creations
+    expected_slack_request_call_count = (
+        2 if mock_slack_request.is_slack_configured else 0
+    )
+    assert mock_slack_request.request.call_count == expected_slack_request_call_count
