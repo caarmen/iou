@@ -19,6 +19,7 @@ logger = logging.getLogger(__file__)
 # Not really for perf: but so that `django-admin makemessages`
 # can find them and add them to the django.po files.
 audit_debt_created = _("audit_debt_created")
+audit_debt_modified = _("audit_debt_modified")
 audit_debt_deleted = _("audit_debt_deleted")
 
 
@@ -28,11 +29,10 @@ def on_debt_created(sender, instance, created, **kwargs):
     """
     Post a message to slack when a Debt object is created.
     """
-    if created:
-        _on_debt_event(
-            audit_debt_event_title=audit_debt_created,
-            debt=instance,
-        )
+    _on_debt_event(
+        audit_debt_event_title=audit_debt_created if created else audit_debt_modified,
+        debt=instance,
+    )
 
 
 @receiver(post_delete, sender=Debt, dispatch_uid="audit_on_debt_deleted")
