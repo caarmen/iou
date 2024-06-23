@@ -2,6 +2,7 @@ import logging
 import os
 
 import requests
+from django.contrib.auth.models import User
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
@@ -9,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 from iou import service
 from iou.decorators import ensure_envvar_set
+from iou.middlewares import CurrentUserMiddleware
 from iou.models import Debt
 
 logger = logging.getLogger(__file__)
@@ -48,6 +50,7 @@ def on_debt_deleted(sender, instance, **kwargs):
 def _on_debt_event(audit_debt_event_title: str, debt: Debt):
     try:
         message = _create_audit_message(
+            user=CurrentUserMiddleware.get_current_user(),
             audit_debt_event_title=audit_debt_event_title,
             debt=debt,
         )
@@ -57,12 +60,14 @@ def _on_debt_event(audit_debt_event_title: str, debt: Debt):
 
 
 def _create_audit_message(
+    user: User,
     audit_debt_event_title: str,
     debt: Debt,
 ) -> str:
     return render_to_string(
         template_name="audit_debt_event.txt",
         context={
+            "user": user,
             "audit_debt_event_title": audit_debt_event_title,
             "debt": debt,
             "latest_debts": service.get_latest_debts(),
