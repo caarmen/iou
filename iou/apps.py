@@ -9,4 +9,6 @@ class IouConfig(AppConfig):
     def ready(self):
         from django.conf import settings
 
+        import iou.audit.signals  # noqa: F401
+
         settings.LOGIN_URL = reverse_lazy("login")
