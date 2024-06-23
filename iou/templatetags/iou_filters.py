@@ -1,4 +1,5 @@
 from django import template
+from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 from iou.formatters import money, person
@@ -30,3 +31,22 @@ def net_debt(value: NetDebt) -> str:
         if value
         else ""
     )
+
+
+@register.filter(name="user")
+def user(value: User) -> str:
+    if not value:
+        return _("no_user")
+    if value.is_anonymous:
+        return _("anonymous_user")
+    username = value.username.strip()
+    if not username:
+        return _("unknown_user")
+    return username
+
+
+@register.filter(name="bold")
+def bold(value: str) -> str | None:
+    if not value:
+        return None
+    return f"*{value}*"

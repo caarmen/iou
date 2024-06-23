@@ -1,4 +1,4 @@
-*{{ audit_debt_event_title }}* {{ debt|debt}}
+{{user|user}} {{ audit_debt_event_title |bold}} {{ debt|debt}}
 {%if net_debt %}
 {{_("audit_net_debt")}}{{ net_debt|net_debt }}
 {% endif %}

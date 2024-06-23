@@ -26,6 +26,9 @@ def test_delete_debt_success(
     debt_factory(amount=5.0, debtor=Person.PERSON_1)
     debt_factory(amount=4.0, debtor=Person.PERSON_2)
 
+    # Don't care about Slack messages sent during test fixture setup.
+    mock_slack_request.request.reset()
+
     response = client.post(reverse("delete", kwargs={"debt_id": 2}))
 
     assert response.status_code == 302
@@ -38,9 +41,8 @@ def test_delete_debt_success(
     assert debt.debtor == Person.PERSON_1
     assert debt.amount == pytest.approx(Decimal(5.0))
 
-    # two factory creations, one api deletion
     expected_slack_request_call_count = (
-        3 if mock_slack_request.is_slack_configured else 0
+        1 if mock_slack_request.is_slack_configured else 0
     )
     assert mock_slack_request.request.call_count == expected_slack_request_call_count
 
@@ -62,6 +64,9 @@ def test_delete_unknown_debt_fail(
     debt_factory(amount=5.0, debtor=Person.PERSON_1)
     debt_factory(amount=4.0, debtor=Person.PERSON_2)
 
+    # Don't care about Slack messages sent during test fixture setup.
+    mock_slack_request.request.reset()
+
     response = client.post(reverse("delete", kwargs={"debt_id": 3}))
 
     assert response.status_code == 404
@@ -69,8 +74,4 @@ def test_delete_unknown_debt_fail(
     debts = Debt.objects.all()
     assert debts.count() == 2
 
-    # two factory creations
-    expected_slack_request_call_count = (
-        2 if mock_slack_request.is_slack_configured else 0
-    )
-    assert mock_slack_request.request.call_count == expected_slack_request_call_count
+    assert mock_slack_request.request.call_count == 0

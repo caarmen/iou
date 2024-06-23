@@ -2,7 +2,7 @@ from django.contrib.humanize.templatetags import humanize
 from django.utils.translation import gettext, ngettext, npgettext, pgettext
 from jinja2 import Environment
 
-from iou.templatetags.iou_filters import debt, net_debt
+from iou.templatetags.iou_filters import bold, debt, net_debt, user
 
 
 def environment(**options):
@@ -20,6 +20,8 @@ def environment(**options):
     # https://jinja.palletsprojects.com/en/3.1.x/api/#custom-filters
     env.filters["net_debt"] = net_debt
     env.filters["debt"] = debt
+    env.filters["user"] = user
+    env.filters["bold"] = bold
     env.filters["naturalday"] = humanize.naturalday
 
     # Provide translation functions to the jinja2 engine:

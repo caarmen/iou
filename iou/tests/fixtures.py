@@ -51,6 +51,7 @@ class MockSlackScenario:
 
 
 @pytest.fixture(
+    autouse=True,
     ids=[
         "slack not configured",
         "slack post success",
