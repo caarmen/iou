@@ -25,13 +25,8 @@
 {% endblock%}
 
 {%block content%}
-<form class="amount-form" action="" method="post" onsubmit="showSpinner();">
-  {% csrf_token %}
-  <table>
-    {{ form }}
-  </table>
-</form>
 
+{% include "iou/partials/amount_form.html" %}
 {% include "iou/spinner.html" %}
 <dialog id="dialogBox" class="dialog-box">
   <div class="dialog--message"></div>
