@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
+from django.template import loader
 
 from iou import service
 from iou.forms import DebtForm
@@ -14,7 +14,23 @@ def index(request: HttpRequest):
         form = DebtForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse("index"))
+            amount_form_partial = loader.render_to_string(
+                template_name="iou/partials/amount_form.html",
+                context={
+                    "form": DebtForm(),
+                },
+                request=request,
+            )
+            debt_list_partial = loader.render_to_string(
+                template_name="iou/partials/debt_list.html",
+                context={
+                    "latest_debts": service.get_latest_debts(),
+                    "net_debt": service.get_net_debt(),
+                },
+                request=request,
+            )
+            content = amount_form_partial + debt_list_partial
+            return HttpResponse(content)
         else:
             # If we get here, it's because the user is bypassing our form
             return JsonResponse(form.errors, status=400)
@@ -34,8 +50,14 @@ def index(request: HttpRequest):
 def delete(request: HttpRequest, debt_id):
     if request.method == "POST":
         get_object_or_404(Debt, id=debt_id).delete()
-
-    return HttpResponseRedirect(reverse("index"))
+    return render(
+        request,
+        template_name="iou/partials/debt_list.html",
+        context={
+            "latest_debts": service.get_latest_debts(),
+            "net_debt": service.get_net_debt(),
+        },
+    )
 
 
 def webmanifest(request: HttpRequest):

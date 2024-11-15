@@ -7,34 +7,25 @@
 {%block title%}{% translate "app_title" %}{% endblock %}
 {%block head%}
 <script>
-  function openDialog(form, message) {
+  document.addEventListener('htmx:confirm', function(evt){
+    if (!evt.detail.question) return;
+    evt.preventDefault();
     const dialog = document.getElementById('dialogBox');
-    dialog.querySelector(".dialog--message").textContent = message;
+    dialog.querySelector(".dialog--message").textContent = evt.detail.question;
     dialog.querySelector("#cancel").onclick = () => dialog.close();
     dialog.querySelector("#submit").onclick = () => {
       dialog.close();
-      showSpinner();
-      form.submit();
+      evt.detail.issueRequest(true);  // true to skip the built-in window.confirm()
     }
     dialog.showModal();
-  }
-  function showSpinner() {
-    document.querySelector(".spinner").classList.remove("hidden");
-  }
+  })
 </script>
 {% endblock%}
 
 {%block content%}
-<form class="amount-form" action="" method="post" onsubmit="showSpinner();">
-  {% csrf_token %}
-  <table>
-    {{ form }}
-  </table>
-</form>
 
+{% include "iou/partials/amount_form.html" %}
 {% include "iou/spinner.html" %}
-<h2 class="net-debt">{{ net_debt | net_debt }}</h2>
-<h2>{% translate "latest_debts" %}</h2>
 <dialog id="dialogBox" class="dialog-box">
   <div class="dialog--message"></div>
   <div class="button-bar">
@@ -42,24 +33,7 @@
     <button id="submit">{% translate "dialog_ok" %}</button>
   </div>
 </dialog>
-<ul>
-  {% for latest_debt in latest_debts %}
-  <li>
-    {% with debt_text=latest_debt|debt %}
-    {% blocktranslate asvar message_delete_confirm with debt_text=debt_text%}Delete {{ debt_text }}?{% endblocktranslate %}
-    <form method="post" class="debt-list-form" action="{%url 'delete' latest_debt.id %}" onsubmit="return false;">
-      {% csrf_token %}
-
-      <div class="debt_list--item--amount">{{ debt_text }}</div>
-      <div class="debt_list--item--timestamp">{{ latest_debt.created_at | naturalday:"MONTH_DAY_FORMAT" }}</div>
-      <div class="debt_list--item--delete">
-        <button class="material-symbols-outlined" onclick="openDialog(form, '{{message_delete_confirm}}')"> delete</button>
-      </div>
-    </form>
-    {% endwith %}
-  </li>
-  {% endfor %}
-</ul>
+{% include "iou/partials/debt_list.html" %}
 <form action="{% url 'logout' %}" method="post">
   {% csrf_token %}
   <input type="hidden" name="next" value="{%url 'login' %}">

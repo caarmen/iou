@@ -31,8 +31,8 @@ def test_delete_debt_success(
 
     response = client.post(reverse("delete", kwargs={"debt_id": 2}))
 
-    assert response.status_code == 302
-    assert response.url == reverse("index")
+    assert response.status_code == 200
+    assert response.context.template_name == "iou/partials/debt_list.html"
 
     debts = Debt.objects.all()
     assert debts.count() == 1

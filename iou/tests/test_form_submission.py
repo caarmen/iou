@@ -91,8 +91,9 @@ def test_add_debt(
 
     response = client.post(reverse("index"), client_input)
 
-    assert response.status_code == 302
-    assert response.url == reverse("index")
+    assert response.status_code == 200
+    assert response.context[0].template_name == "iou/partials/amount_form.html"
+    assert response.context[-1].template_name == "iou/partials/debt_list.html"
 
     debts = Debt.objects.all()
     assert debts.count() == 1

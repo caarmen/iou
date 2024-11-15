@@ -1,5 +1,6 @@
 Babel==2.13.1
 Django==5.0b1
+django-htmx==1.21.0
 Jinja2==3.1.4
 python-dotenv==1.0.0
 gunicorn==21.2.0

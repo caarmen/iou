@@ -1,0 +1,32 @@
+{% load humanize %}
+{% load i18n %}
+{% load iou_filters %}
+<div id="debts">
+  <h2 class="net-debt">{{ net_debt | net_debt }}</h2>
+  <h2>{% translate "latest_debts" %}</h2>
+  <ul>
+    {% for latest_debt in latest_debts %}
+    <li>
+      {% with debt_text=latest_debt|debt %}
+      {% blocktranslate asvar message_delete_confirm with debt_text=debt_text%}Delete {{ debt_text }}?{% endblocktranslate %}
+      <form
+        class="debt-list-form"
+        hx-post="{%url 'delete' latest_debt.id %}"
+        hx-target="#debts"
+        hx-swap="outerHTML"
+        hx-indicator="#spinner"
+        hx-confirm="{{message_delete_confirm}}"
+      >
+        {% csrf_token %}
+
+        <div class="debt_list--item--amount">{{ debt_text }}</div>
+        <div class="debt_list--item--timestamp">{{ latest_debt.created_at | naturalday:"MONTH_DAY_FORMAT" }}</div>
+        <div class="debt_list--item--delete">
+          <button class="material-symbols-outlined"> delete</button>
+        </div>
+      </form>
+      {% endwith %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
