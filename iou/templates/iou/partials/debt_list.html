@@ -9,13 +9,20 @@
     <li>
       {% with debt_text=latest_debt|debt %}
       {% blocktranslate asvar message_delete_confirm with debt_text=debt_text%}Delete {{ debt_text }}?{% endblocktranslate %}
-      <form method="post" class="debt-list-form" action="{%url 'delete' latest_debt.id %}" onsubmit="return false;">
+      <form
+        class="debt-list-form"
+        hx-post="{%url 'delete' latest_debt.id %}"
+        hx-target="#debts"
+        hx-swap="outerHTML"
+        hx-indicator="#spinner"
+        hx-confirm="{{message_delete_confirm}}"
+      >
         {% csrf_token %}
 
         <div class="debt_list--item--amount">{{ debt_text }}</div>
         <div class="debt_list--item--timestamp">{{ latest_debt.created_at | naturalday:"MONTH_DAY_FORMAT" }}</div>
         <div class="debt_list--item--delete">
-          <button class="material-symbols-outlined" onclick="openDialog(form, '{{message_delete_confirm}}')"> delete</button>
+          <button class="material-symbols-outlined"> delete</button>
         </div>
       </form>
       {% endwith %}

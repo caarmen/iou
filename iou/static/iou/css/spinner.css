@@ -1,5 +1,5 @@
 .spinner {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 
@@ -15,8 +15,11 @@
     -webkit-backdrop-filter: blur(0.3em);
 }
 
-.spinner.hidden {
-    display: none;
+.htmx-request .spinner {
+    display: flex;
+}
+.htmx-request.spinner {
+    display: flex;
 }
 
 .spinner .material-symbols-outlined {

@@ -34,8 +34,14 @@ def index(request: HttpRequest):
 def delete(request: HttpRequest, debt_id):
     if request.method == "POST":
         get_object_or_404(Debt, id=debt_id).delete()
-
-    return HttpResponseRedirect(reverse("index"))
+    return render(
+        request,
+        template_name="iou/partials/debt_list.html",
+        context={
+            "latest_debts": service.get_latest_debts(),
+            "net_debt": service.get_net_debt(),
+        },
+    )
 
 
 def webmanifest(request: HttpRequest):
