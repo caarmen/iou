@@ -1,4 +1,11 @@
-<form class="amount-form" action="" method="post" onsubmit="showSpinner();">
+<form
+  id="amount-form"
+  class="amount-form"
+  hx-post="{% url 'index' %}"
+  hx-target="#debts"
+  hx-swap="outerHTML"
+  hx-swap-oob="true"
+  hx-indicator="#spinner">
   {% csrf_token %}
   <table>
     {{ form }}

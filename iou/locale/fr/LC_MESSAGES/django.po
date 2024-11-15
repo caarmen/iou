@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-15 18:46+0100\n"
+"POT-Creation-Date: 2024-11-15 18:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,15 +70,15 @@ msgstr "Dernières dettes :"
 msgid "app_title"
 msgstr "IOU"
 
-#: templates/iou/index.html:34
+#: templates/iou/index.html:32
 msgid "dialog_cancel"
 msgstr "Annuler"
 
-#: templates/iou/index.html:35
+#: templates/iou/index.html:33
 msgid "dialog_ok"
 msgstr "Ok"
 
-#: templates/iou/index.html:42
+#: templates/iou/index.html:40
 msgid "Log out"
 msgstr ""
 
