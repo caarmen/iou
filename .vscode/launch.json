@@ -10,7 +10,8 @@
             "request": "launch",
             "module": "manage",
             "justMyCode": false,
-            "args": ["runserver"]
+            "args": ["runserver", "8000"],
+            "env": {"DEBUG": "true"}
         }
     ]
 }
