@@ -2,9 +2,11 @@ import dataclasses
 
 import pytest
 import requests_mock
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.test import Client
 from requests_mock.adapter import _Matcher
+
+User = get_user_model()
 
 
 @pytest.fixture()

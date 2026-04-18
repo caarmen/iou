@@ -2,7 +2,7 @@ import logging
 import os
 
 import requests
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
@@ -13,6 +13,7 @@ from iou.decorators import ensure_envvar_set
 from iou.middlewares import CurrentUserMiddleware
 from iou.models import Debt
 
+User = get_user_model()
 logger = logging.getLogger(__file__)
 
 # Preload these translation strings.
