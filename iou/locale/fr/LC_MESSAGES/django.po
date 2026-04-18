@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-15 18:50+0100\n"
+"POT-Creation-Date: 2026-04-18 22:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: audit/signals.py:21
+#: audit/signals.py:22
 msgid "audit_debt_created"
 msgstr "a créé une dette :"
 
-#: audit/signals.py:22
+#: audit/signals.py:23
 msgid "audit_debt_modified"
 msgstr "a modifié une dette :"
 
-#: audit/signals.py:23
+#: audit/signals.py:24
 msgid "audit_debt_deleted"
 msgstr "a supprimé une dette :"
 
@@ -95,26 +95,26 @@ msgstr "Supprimer &quot;%(debt_text)s&quot; ?"
 msgid "Log in"
 msgstr ""
 
-#: templatetags/iou_filters.py:15
+#: templatetags/iou_filters.py:17
 msgid "debt_list_item_with_description"
 msgstr "{0} doit {1} ({2})"
 
-#: templatetags/iou_filters.py:21
+#: templatetags/iou_filters.py:23
 msgid "debt_list_item"
 msgstr "{0} doit {1}"
 
-#: templatetags/iou_filters.py:30
+#: templatetags/iou_filters.py:32
 msgid "who_owes_what"
 msgstr "💰 {0} doit {1}"
 
-#: templatetags/iou_filters.py:39
+#: templatetags/iou_filters.py:41
 msgid "no_user"
 msgstr "Aucun utilisateur"
 
-#: templatetags/iou_filters.py:41
+#: templatetags/iou_filters.py:43
 msgid "anonymous_user"
 msgstr "Utilisateur anonyme"
 
-#: templatetags/iou_filters.py:44
+#: templatetags/iou_filters.py:46
 msgid "unknown_user"
 msgstr "Utilisateur Inconnu"
