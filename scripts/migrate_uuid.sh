@@ -26,10 +26,16 @@ done > iou.dump
 # 2. Delete the database.
 mv "${DB_PATH}" "${backup_db}"
 
-# 3. Migrate the empty database to build the db structure.
+# 3. Migrate the database up to, and not including, the addition of the uuid field:
 
-python manage.py migrate
+python manage.py migrate iou 0003
+python manage.py migrate admin
+python manage.py migrate sessions
 
-# 4. Import the dump.
+# 4. Import the dump:
 
 cat iou.dump |sqlite3 "${DB_PATH}"
+
+# 5. Finish the migrations to add the uuid field:
+
+python manage.py migrate

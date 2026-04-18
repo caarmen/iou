@@ -1,3 +1,4 @@
+import uuid
 from decimal import Decimal
 from typing import Any
 
@@ -8,6 +9,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
+    uuid = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        editable=False,
+    )
 
     class Meta:
         db_table = "auth_user"
