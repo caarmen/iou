@@ -1,6 +1,6 @@
 from contextvars import ContextVar
 
-from django.contrib.auth.models import User
+from iou.models import User
 
 
 class CurrentUserMiddleware:

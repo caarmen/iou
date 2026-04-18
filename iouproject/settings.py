@@ -125,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "iou.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
