@@ -42,6 +42,7 @@ SESSION_COOKIE_AGE = int(environ["SESSION_COOKIE_AGE"])
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "iou.apps.IouConfig",
+    "passkeys.apps.PasskeysConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

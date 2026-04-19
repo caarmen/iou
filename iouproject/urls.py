@@ -23,4 +23,5 @@ urlpatterns = [
     path("", RedirectView.as_view(pattern_name="iou:index", permanent=True)),
     path("iou/", include("iou.urls")),
     path("admin/", admin.site.urls),
+    path("passkeys/", include("passkeys.urls")),
 ]
