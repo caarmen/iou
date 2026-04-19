@@ -1,0 +1,27 @@
+{% extends 'iou/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{%block title %}{% translate "login" %}{%endblock%}
+{%block content%}
+  {{options | json_script:"parse_options" }}
+  <script>
+    async function onClickLogin(event) {
+      const credential = await navigator.credentials.get({
+        publicKey: PublicKeyCredential.parseRequestOptionsFromJSON(
+          JSON.parse(document.getElementById('parse_options').textContent)
+        )
+      });
+      event.target.form.credential_json.value = JSON.stringify(credential.toJSON())
+      event.target.form.submit();
+    }
+  </script>
+<form action="{% url 'passkeys:login-finish' %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="credential_json"/>
+  <button type="button" onclick="onClickLogin(event)">
+    {% translate "login_with_passkey" %}
+  </button>
+</form>
+<a href="{% url 'iou:login'%}"><button>{%translate "login_with_password" %}</button></a>
+{%endblock%}

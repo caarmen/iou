@@ -36,7 +36,7 @@
 {% include "iou/partials/debt_list.html" %}
 <form action="{% url 'iou:logout' %}" method="post">
   {% csrf_token %}
-  <input type="hidden" name="next" value="{%url 'iou:login' %}">
+  <input type="hidden" name="next" value="{%url 'passkeys:login-start' %}">
   <button class="button--logout" type="submit">{% translate "Log out" %}</button>
 </form>
 {% endblock%}

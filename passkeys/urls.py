@@ -14,4 +14,14 @@ urlpatterns = [
         views.register_finish,
         name="register-finish",
     ),
+    path(
+        "login-start/",
+        views.login_start,
+        name="login-start",
+    ),
+    path(
+        "login-finish/",
+        views.login_finish,
+        name="login-finish",
+    ),
 ]

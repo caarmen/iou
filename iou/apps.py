@@ -1,5 +1,4 @@
 from django.apps import AppConfig
-from django.urls import reverse_lazy
 
 
 class IouConfig(AppConfig):
@@ -7,8 +6,5 @@ class IouConfig(AppConfig):
     name = "iou"
 
     def ready(self):
-        from django.conf import settings
 
         import iou.audit.signals  # noqa: F401
-
-        settings.LOGIN_URL = reverse_lazy("iou:login")

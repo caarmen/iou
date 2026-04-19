@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 20:10+0200\n"
+"POT-Creation-Date: 2026-04-25 20:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: templates/passkeys/login_start.html:5
+msgid "login"
+msgstr "Login"
+
+#: templates/passkeys/login_start.html:23
+msgid "login_with_passkey"
+msgstr "Login with passkey"
+
+#: templates/passkeys/login_start.html:26
+msgid "login_with_password"
+msgstr "Login with password"
 
 #: templates/passkeys/register_finish.html:5
 #: templates/passkeys/register_start.html:5
