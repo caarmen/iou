@@ -1,5 +1,5 @@
 error=0
-for project in iouproject iou
+for project in iouproject iou passkeys
 do
   black $project || error=$?
   ruff check --fix --exit-non-zero-on-fix $project || error=$?
@@ -8,6 +8,7 @@ done
 
 # Make sure we don't have any translation updates
 pushd iou && django-admin makemessages --locale en_US --locale fr && popd
+pushd passkeys && django-admin makemessages --locale en_US --locale fr && popd
 django-admin compilemessages || error=$?
 git diff --exit-code || error=$?
 
