@@ -11,4 +11,4 @@ class IouConfig(AppConfig):
 
         import iou.audit.signals  # noqa: F401
 
-        settings.LOGIN_URL = reverse_lazy("login")
+        settings.LOGIN_URL = reverse_lazy("iou:login")

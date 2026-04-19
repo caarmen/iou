@@ -11,7 +11,7 @@
       {% blocktranslate asvar message_delete_confirm with debt_text=debt_text%}Delete {{ debt_text }}?{% endblocktranslate %}
       <form
         class="debt-list-form"
-        hx-post="{%url 'delete' latest_debt.id %}"
+        hx-post="{%url 'iou:delete' latest_debt.id %}"
         hx-target="#debts"
         hx-swap="outerHTML"
         hx-indicator="#spinner"
