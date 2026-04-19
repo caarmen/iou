@@ -1,0 +1,11 @@
+{% extends 'iou/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{%block title %}{% translate "title_create_passkey" %}{%endblock%}
+{%block content%}
+{% translate "passkey_created" %}
+<p>
+    <a href="{% url 'iou:index'%}"><button>{%translate "back_to_iou" %}</button></a>
+</p>
+{%endblock%}
