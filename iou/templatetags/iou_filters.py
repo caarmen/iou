@@ -1,10 +1,12 @@
 from django import template
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from iou.formatters import money, person
 from iou.models import Debt
 from iou.service import NetDebt
+
+User = get_user_model()
 
 register = template.Library()
 

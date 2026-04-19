@@ -1,7 +1,11 @@
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin
 
 from iou.formatters import person
 from iou.models import Debt, Person
+
+User = get_user_model()
 
 
 class DebtAdmin(admin.ModelAdmin):
@@ -28,3 +32,5 @@ class DebtAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Debt, DebtAdmin)
+
+admin.site.register(User, UserAdmin)

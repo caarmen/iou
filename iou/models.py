@@ -1,9 +1,22 @@
+import uuid
 from decimal import Decimal
 from typing import Any
 
+from django.contrib.auth.models import AbstractUser
 from django.core import validators
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+
+class User(AbstractUser):
+    uuid = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True,
+        editable=False,
+    )
+
+    class Meta:
+        db_table = "auth_user"
 
 
 class Person(models.TextChoices):
