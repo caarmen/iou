@@ -26,7 +26,7 @@ def test_list_debts(
     debt_factory(debtor=Person.PERSON_1, amount=5.0)
     debt_factory(debtor=Person.PERSON_2, amount=7.5, description=None)
 
-    response = client.get(reverse("index"))
+    response = client.get(reverse("iou:index"))
     assert response.status_code == 200
     latest_debts: Iterable[Debt] = response.context["latest_debts"]
 
@@ -59,7 +59,7 @@ def test_no_debts(
     Then the list of debts is empty
     And the net debt is None.
     """
-    response = client.get(reverse("index"))
+    response = client.get(reverse("iou:index"))
     assert response.status_code == 200
     latest_debts: Iterable[Debt] = response.context["latest_debts"]
     assert len(latest_debts) == 0
@@ -84,7 +84,7 @@ def test_net_debt_zero(
     debt_factory(debtor=Person.PERSON_1, amount=5.0)
     debt_factory(debtor=Person.PERSON_2, amount=9.33, description=None)
 
-    response = client.get(reverse("index"))
+    response = client.get(reverse("iou:index"))
     assert response.status_code == 200
     latest_debts: Iterable[Debt] = response.context["latest_debts"]
 

@@ -29,7 +29,7 @@ def test_delete_debt_success(
     # Don't care about Slack messages sent during test fixture setup.
     mock_slack_request.request.reset()
 
-    response = client.post(reverse("delete", kwargs={"debt_id": 2}))
+    response = client.post(reverse("iou:delete", kwargs={"debt_id": 2}))
 
     assert response.status_code == 200
     assert response.context.template_name == "iou/partials/debt_list.html"
@@ -67,7 +67,7 @@ def test_delete_unknown_debt_fail(
     # Don't care about Slack messages sent during test fixture setup.
     mock_slack_request.request.reset()
 
-    response = client.post(reverse("delete", kwargs={"debt_id": 3}))
+    response = client.post(reverse("iou:delete", kwargs={"debt_id": 3}))
 
     assert response.status_code == 404
 

@@ -160,3 +160,15 @@ STORAGES = {
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Configuration for Django running behind a reverse proxy.
+# Assumptions for this config:
+# The reverse-proxy must accept client requests only over https.
+# The reverse-proxy sets X-Forwarded-Proto to https.
+# The clients specify the prefix defined in PROXY_PREFIX in the location paths.
+if "PROXY_PREFIX" in environ:
+    PROXY_PREFIX = environ["PROXY_PREFIX"]
+    # https://docs.djangoproject.com/en/6.0/ref/settings/#secure-proxy-ssl-header
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    FORCE_SCRIPT_NAME = PROXY_PREFIX
+    STATIC_URL = f"{FORCE_SCRIPT_NAME}/{STATIC_URL}"

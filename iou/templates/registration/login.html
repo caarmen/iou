@@ -5,7 +5,7 @@
 <form method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="hidden" name="next" value="{%url 'index' %}">
+    <input type="hidden" name="next" value="{%url 'iou:index' %}">
     <button type="submit">{% translate "Log in" %}</button>
 </form>
 {%endblock%}

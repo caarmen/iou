@@ -18,6 +18,7 @@ Copy the `.env.template` from this project to a file `.env`, and adjust any para
 
 * The `SECRET_KEY` can be generated using the [get_random_secret_key](https://github.com/django/django/blob/5.0b1/django/core/management/utils.py#L79:L84) function in Django.
 * Set `DEBUG` to `false` for a production environment.
+* If the application runs behind a reverse proxy like nginx or apache, set `PROXY_PREFIX` to the url path prefix clients provide to access the application.
 
 ### Run the docker image
 

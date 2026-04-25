@@ -89,7 +89,7 @@ def test_add_debt(
     debts = Debt.objects.all()
     assert debts.count() == 0
 
-    response = client.post(reverse("index"), client_input)
+    response = client.post(reverse("iou:index"), client_input)
 
     assert response.status_code == 200
     assert response.context[0].template_name == "iou/partials/amount_form.html"
@@ -195,7 +195,7 @@ def test_invalid_input(
     debts = Debt.objects.all()
     assert debts.count() == 0
 
-    response = client.post(reverse("index"), client_input)
+    response = client.post(reverse("iou:index"), client_input)
 
     assert response.status_code == 400
     response_json: dict = response.json()

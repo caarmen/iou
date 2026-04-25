@@ -1,0 +1,5 @@
+# https://coverage.readthedocs.io/en/latest/source.html#source
+[run]
+omit=**/tests/**
+  iouproject/asgi.py
+  iouproject/wsgi.py
