@@ -1,5 +1,6 @@
 import json
 import uuid
+from typing import Protocol
 
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.decorators import login_required
@@ -51,10 +52,15 @@ def register_start(request: HttpRequest):
     )
 
 
+class VerifiedRegistration(Protocol):
+    credential_id: bytes
+    credential_public_key: bytes
+
+
 @require_POST
 @login_required
 def register_finish(request: HttpRequest):
-    registration_verification = verify_registration_response(
+    registration_verification: VerifiedRegistration = verify_registration_response(
         credential=json.loads(request.POST["credential_json"]),
         expected_challenge=base64url_to_bytes(
             request.session.get(SESSION_KEY_CHALLENGE)
@@ -98,12 +104,28 @@ def login_start(request: HttpRequest):
     )
 
 
+class AuthenticatorAssertionResponse(Protocol):
+    user_handle: bytes
+
+
+class AuthenticationCredential(Protocol):
+    id: str
+    response: AuthenticatorAssertionResponse
+
+
+class VerifiedAuthentication(Protocol):
+    user_verified: bool
+    new_sign_count: int
+
+
 @require_POST
 def login_finish(request: HttpRequest):
     if request.user.is_authenticated:
         return redirect(reverse("iou:index"))
     credential_json = json.loads(request.POST["credential_json"])
-    request_credential = parse_authentication_credential_json(credential_json)
+    request_credential: AuthenticationCredential = parse_authentication_credential_json(
+        credential_json
+    )
     db_credential = Credential.objects.filter(
         credential_id=request_credential.id
     ).first()
