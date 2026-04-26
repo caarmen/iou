@@ -1,6 +1,7 @@
 {
     "python.testing.pytestArgs": [
-        "iou/tests"
+        "iou/tests",
+        "passkeys/tests"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true
