@@ -4,10 +4,11 @@ RUN apt-get update && apt-get install -y gettext
 
 WORKDIR /app
 
-COPY iouproject /app/iouproject
-COPY iou /app/iou
+COPY iouproject ./iouproject
+COPY iou ./iou
+COPY passkeys ./passkeys
 COPY requirements/prod.txt requirements.txt
-COPY manage.py /app/
+COPY manage.py ./
 
 
 RUN pip install -r requirements.txt
