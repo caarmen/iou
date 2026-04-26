@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-25 20:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: templates/passkeys/login_start.html:5
+msgid "login"
+msgstr "Connexion"
+
+#: templates/passkeys/login_start.html:23
+msgid "login_with_passkey"
+msgstr "Connexion avec passkey"
+
+#: templates/passkeys/login_start.html:26
+msgid "login_with_password"
+msgstr "Connexion avec mot de passe"
+
+#: templates/passkeys/register_finish.html:5
+#: templates/passkeys/register_start.html:5
+msgid "title_create_passkey"
+msgstr "Créer une passkey"
+
+#: templates/passkeys/register_finish.html:7
+msgid "passkey_created"
+msgstr "Passkey créée."
+
+#: templates/passkeys/register_finish.html:9
+msgid "back_to_iou"
+msgstr "Retourner à IOU"
+
+#: templates/passkeys/register_start.html:19
+msgid "create_passkey_description"
+msgstr "Créer une passkey pour vous connecter sans mot de passe."
+
+#: templates/passkeys/register_start.html:24
+msgid "btn_create_passkey"
+msgstr "Créer"

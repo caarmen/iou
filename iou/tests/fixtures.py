@@ -2,28 +2,7 @@ import dataclasses
 
 import pytest
 import requests_mock
-from django.contrib.auth import get_user_model
-from django.test import Client
 from requests_mock.adapter import _Matcher
-
-User = get_user_model()
-
-
-@pytest.fixture()
-def test_account_password():
-    return "secret"
-
-
-@pytest.fixture()
-def user(test_account_password):
-    return User.objects.create_user(username="fred", password=test_account_password)
-
-
-@pytest.fixture()
-def client(user: User, test_account_password: str):
-    c = Client()
-    c.login(username=user.username, password=test_account_password)
-    return c
 
 
 @dataclasses.dataclass
