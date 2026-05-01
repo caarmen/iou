@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model, login
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import BadRequest
 from django.http import HttpRequest
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.http import require_GET, require_POST
 from webauthn import (
@@ -159,3 +159,17 @@ def login_finish(request: HttpRequest):
     login(request, db_credential.user)
 
     return redirect(to=reverse("iou:index"))
+
+
+@require_POST
+@login_required
+def delete(request: HttpRequest, credential_id: str):
+    if request.method == "POST":
+        get_object_or_404(
+            Credential, credential_id=credential_id, user=request.user
+        ).delete()
+    return render(
+        request,
+        template_name="passkeys/partials/passkeys_list.html",
+        context={"credentials": get_user_credentials(user=request.user)},
+    )

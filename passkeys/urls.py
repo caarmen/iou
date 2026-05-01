@@ -24,4 +24,9 @@ urlpatterns = [
         views.login_finish,
         name="login-finish",
     ),
+    path(
+        "delete/<str:credential_id>/",
+        views.delete,
+        name="delete",
+    ),
 ]

@@ -4,16 +4,30 @@
 <div id="credentials">
   <table>
     <thead>
-      <tr><th>{% translate "column_title_added" %}</th><th>{% translate "column_title_last_used" %}</th></tr>
+      <tr><th>{% translate "column_title_added" %}</th><th>{% translate "column_title_last_used" %}</th><th></th></tr>
     </thead>
+
     {% for credential in credentials %}
     <tr>
+      {% with message_delete_confirm=credential|passkey_delete_confirm_message%}
       <td>
         {{ credential.created_at | date:"SHORT_DATETIME_FORMAT" }}
       </td>
       <td>
         {{ credential | passkey_last_used }}
       </td>
+      <td class="material-icon">
+        <form
+          hx-post="{%url 'passkeys:delete' credential.credential_id %}"
+          hx-target="#credentials"
+          hx-swap="outerHTML"
+          hx-indicator="#spinner"
+          hx-confirm="{{message_delete_confirm}}">
+          {% csrf_token %}
+          <button class="material-symbols-outlined">delete</button>
+        </form>
+      </td>
+      {% endwith %}
     </tr>
     {% endfor %}
   </table>

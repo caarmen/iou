@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-02 02:26+0200\n"
+"POT-Creation-Date: 2026-05-01 19:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/passkeys/index.html:5 templates/passkeys/index.html:20
+#: templates/passkeys/index.html:5 templates/passkeys/index.html:44
 msgid "passkeys_list_title"
 msgstr "My passkeys"
 
-#: templates/passkeys/index.html:19
+#: templates/passkeys/index.html:35
 msgid "passkeys_description"
 msgstr "Passkeys allow you to sign in without a password."
 
-#: templates/passkeys/index.html:26
+#: templates/passkeys/index.html:40
+msgid "dialog_cancel"
+msgstr "Cancel"
+
+#: templates/passkeys/index.html:41
+msgid "dialog_ok"
+msgstr "Ok"
+
+#: templates/passkeys/index.html:50
 msgid "btn_create_passkey"
 msgstr "Create"
 
-#: templates/passkeys/index.html:31
+#: templates/passkeys/index.html:55
 msgid "back_to_iou"
 msgstr "Go back to IOU"
 
@@ -53,6 +61,14 @@ msgstr "Added"
 msgid "column_title_last_used"
 msgstr "Last used"
 
-#: templatetags/passkey_filters.py:16
+#: templatetags/passkey_filters.py:15
+msgid "passkey_delete_confirm_message"
+msgstr "Delete passkey added on {0} ({1})?"
+
+#: templatetags/passkey_filters.py:20
+msgid "passkey_never_used"
+msgstr "Never used"
+
+#: templatetags/passkey_filters.py:31
 msgid "passkey_never"
 msgstr "Never"
