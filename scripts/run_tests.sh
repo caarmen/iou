@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 rm -rf reports
 python -m manage collectstatic --noinput
 python -m pytest --cov=iou --cov=iouproject --cov=passkeys --cov-report=xml --cov-report=html --junitxml="reports/junit.xml"

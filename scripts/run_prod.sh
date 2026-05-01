@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 export DEBUG=false
 python manage.py migrate && \
 python manage.py createadminuser && \
