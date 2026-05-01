@@ -32,7 +32,7 @@ WEBAUTHN_RP_NAME = "IOU"
 
 @require_GET
 @login_required
-def register_start(request: HttpRequest):
+def index(request: HttpRequest):
     user = request.user
     # https://github.com/duo-labs/py_webauthn/blob/master/examples/registration.py
     registration_options = generate_registration_options(
@@ -48,7 +48,7 @@ def register_start(request: HttpRequest):
         context={
             "options": options_dict,
         },
-        template_name="passkeys/register_start.html",
+        template_name="passkeys/index.html",
     )
 
 

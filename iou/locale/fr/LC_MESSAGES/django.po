@@ -83,8 +83,8 @@ msgid "Log out"
 msgstr ""
 
 #: templates/iou/index.html:43
-msgid "create_passkey"
-msgstr "Créer une passkey"
+msgid "manage_passkeys"
+msgstr "Passkeys"
 
 #: templates/iou/partials/debt_list.html:6
 msgid "latest_debts"
