@@ -1,3 +1,4 @@
+import datetime as dt
 import json
 import uuid
 from typing import Protocol
@@ -152,6 +153,7 @@ def login_finish(request: HttpRequest):
         raise BadRequest()
 
     db_credential.sign_count = authentication_verification.new_sign_count
+    db_credential.last_used_at = dt.datetime.now(tz=dt.timezone.utc)
     db_credential.save()
 
     login(request, db_credential.user)

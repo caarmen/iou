@@ -15,4 +15,5 @@ class Credential(models.Model):
     )
     public_key = models.TextField()
     sign_count = models.IntegerField(default=0)
+    last_used_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

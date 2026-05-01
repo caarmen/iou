@@ -1,14 +1,18 @@
 {% load humanize %}
 {% load i18n %}
+{% load passkey_filters %}
 <div id="credentials">
   <table>
     <thead>
-      <tr><th>{% translate "column_title_added" %}</th></tr>
+      <tr><th>{% translate "column_title_added" %}</th><th>{% translate "column_title_last_used" %}</th></tr>
     </thead>
     {% for credential in credentials %}
     <tr>
       <td>
         {{ credential.created_at | date:"SHORT_DATETIME_FORMAT" }}
+      </td>
+      <td>
+        {{ credential | passkey_last_used }}
       </td>
     </tr>
     {% endfor %}
