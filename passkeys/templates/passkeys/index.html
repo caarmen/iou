@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load static %}
 
-{%block title %}{% translate "title_create_passkey" %}{%endblock%}
+{%block title %}{% translate "passkeys_list_title" %}{%endblock%}
 {%block content%}
   {{options | json_script:"parse_options"}}
   <script>
@@ -16,7 +16,9 @@
       event.target.form.submit();
     }
   </script>
-{% translate "create_passkey_description" %}
+{% translate "passkeys_description" %}
+<h2>{% translate "passkeys_list_title" %}</h2>
+{% include "passkeys/partials/passkeys_list.html" %}
 <form action="{% url 'passkeys:register-finish' %}" method="post">
   {% csrf_token %}
   <input type="hidden" name="credential_json"/>
@@ -24,4 +26,8 @@
     {% translate "btn_create_passkey" %}
   </button>
 </form>
+<hr>
+<p>
+    <a href="{% url 'iou:index'%}"><button>{%translate "back_to_iou" %}</button></a>
+</p>
 {%endblock%}

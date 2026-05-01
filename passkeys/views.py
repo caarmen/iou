@@ -23,6 +23,7 @@ from webauthn.helpers import (
 )
 
 from passkeys.models import Credential
+from passkeys.service import get_user_credentials
 
 User = get_user_model()
 
@@ -45,9 +46,7 @@ def index(request: HttpRequest):
     request.session[SESSION_KEY_CHALLENGE] = options_dict["challenge"]
     return render(
         request,
-        context={
-            "options": options_dict,
-        },
+        context={"options": options_dict, "credentials": get_user_credentials(user)},
         template_name="passkeys/index.html",
     )
 
@@ -78,10 +77,7 @@ def register_finish(request: HttpRequest):
         public_key=credential_public_key,
         credential_id=credential_id,
     )
-    return render(
-        request,
-        template_name="passkeys/register_finish.html",
-    )
+    return redirect(reverse("passkeys:index"))
 
 
 @require_GET

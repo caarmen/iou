@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-01 14:08+0200\n"
+"POT-Creation-Date: 2026-05-01 22:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/passkeys/index.html:5 templates/passkeys/register_finish.html:5
-msgid "title_create_passkey"
-msgstr "Create a passkey"
+#: templates/passkeys/index.html:5 templates/passkeys/index.html:20
+msgid "passkeys_list_title"
+msgstr "My passkeys"
 
 #: templates/passkeys/index.html:19
-msgid "create_passkey_description"
-msgstr "Create a passkey to sign-in without a password."
+msgid "passkeys_description"
+msgstr "Passkeys allow you to sign in without a password."
 
-#: templates/passkeys/index.html:24
+#: templates/passkeys/index.html:26
 msgid "btn_create_passkey"
 msgstr "Create"
+
+#: templates/passkeys/index.html:31
+msgid "back_to_iou"
+msgstr "Go back to IOU"
 
 #: templates/passkeys/login_start.html:5
 msgid "login"
@@ -41,10 +45,6 @@ msgstr "Login with passkey"
 msgid "login_with_password"
 msgstr "Login with password"
 
-#: templates/passkeys/register_finish.html:7
-msgid "passkey_created"
-msgstr "Passkey created."
-
-#: templates/passkeys/register_finish.html:9
-msgid "back_to_iou"
-msgstr "Go back to IOU"
+#: templates/passkeys/partials/passkeys_list.html:6
+msgid "column_title_added"
+msgstr "Added"

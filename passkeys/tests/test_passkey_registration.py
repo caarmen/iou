@@ -98,4 +98,5 @@ def test_passkey_register(
     assert created_credential.user == user
     assert created_credential.credential_id == bytes_to_base64url(fake_cred_id)
     assert created_credential.sign_count == 0
-    assert response_finish.status_code == 200
+    assert response_finish.status_code == 302
+    assert response_finish.url == reverse("passkeys:index")

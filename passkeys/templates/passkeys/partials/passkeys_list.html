@@ -1,0 +1,16 @@
+{% load humanize %}
+{% load i18n %}
+<div id="credentials">
+  <table>
+    <thead>
+      <tr><th>{% translate "column_title_added" %}</th></tr>
+    </thead>
+    {% for credential in credentials %}
+    <tr>
+      <td>
+        {{ credential.created_at | date:"SHORT_DATETIME_FORMAT" }}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>

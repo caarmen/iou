@@ -61,8 +61,20 @@ li {
     padding-bottom: 6px;
 }
 
-li:nth-child(odd) {
+li:nth-child(odd), tr:nth-child(even) {
     backdrop-filter: brightness(var(--li-odd-child-brightness));
+}
+
+table {
+    border-spacing: 0px;
+}
+
+th {
+    text-align: start;
+}
+
+td {
+    font-size: 0.9em;
 }
 
 li form {
