@@ -1,3 +1,4 @@
+import datetime as dt
 import json
 import uuid
 from typing import Protocol
@@ -6,7 +7,7 @@ from django.contrib.auth import get_user_model, login
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import BadRequest
 from django.http import HttpRequest
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.http import require_GET, require_POST
 from webauthn import (
@@ -23,6 +24,7 @@ from webauthn.helpers import (
 )
 
 from passkeys.models import Credential
+from passkeys.service import get_user_credentials
 
 User = get_user_model()
 
@@ -32,7 +34,7 @@ WEBAUTHN_RP_NAME = "IOU"
 
 @require_GET
 @login_required
-def register_start(request: HttpRequest):
+def index(request: HttpRequest):
     user = request.user
     # https://github.com/duo-labs/py_webauthn/blob/master/examples/registration.py
     registration_options = generate_registration_options(
@@ -45,10 +47,8 @@ def register_start(request: HttpRequest):
     request.session[SESSION_KEY_CHALLENGE] = options_dict["challenge"]
     return render(
         request,
-        context={
-            "options": options_dict,
-        },
-        template_name="passkeys/register_start.html",
+        context={"options": options_dict, "credentials": get_user_credentials(user)},
+        template_name="passkeys/index.html",
     )
 
 
@@ -78,10 +78,7 @@ def register_finish(request: HttpRequest):
         public_key=credential_public_key,
         credential_id=credential_id,
     )
-    return render(
-        request,
-        template_name="passkeys/register_finish.html",
-    )
+    return redirect(reverse("passkeys:index"))
 
 
 @require_GET
@@ -156,8 +153,23 @@ def login_finish(request: HttpRequest):
         raise BadRequest()
 
     db_credential.sign_count = authentication_verification.new_sign_count
+    db_credential.last_used_at = dt.datetime.now(tz=dt.timezone.utc)
     db_credential.save()
 
     login(request, db_credential.user)
 
     return redirect(to=reverse("iou:index"))
+
+
+@require_POST
+@login_required
+def delete(request: HttpRequest, credential_id: str):
+    if request.method == "POST":
+        get_object_or_404(
+            Credential, credential_id=credential_id, user=request.user
+        ).delete()
+    return render(
+        request,
+        template_name="passkeys/partials/passkeys_list.html",
+        context={"credentials": get_user_credentials(user=request.user)},
+    )

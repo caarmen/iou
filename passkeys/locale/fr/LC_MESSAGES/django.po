@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 20:10+0200\n"
+"POT-Creation-Date: 2026-05-01 19:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: templates/passkeys/index.html:5 templates/passkeys/index.html:44
+msgid "passkeys_list_title"
+msgstr "Mes passkeys"
+
+#: templates/passkeys/index.html:35
+msgid "passkeys_description"
+msgstr "Une passkey vous permet de vous authentifier sans mot de passe."
+
+#: templates/passkeys/index.html:40
+msgid "dialog_cancel"
+msgstr "Annuler"
+
+#: templates/passkeys/index.html:41
+msgid "dialog_ok"
+msgstr "Ok"
+
+#: templates/passkeys/index.html:50
+msgid "btn_create_passkey"
+msgstr "Créer"
+
+#: templates/passkeys/index.html:55
+msgid "back_to_iou"
+msgstr "Retourner à IOU"
 
 #: templates/passkeys/login_start.html:5
 msgid "login"
@@ -30,23 +54,22 @@ msgstr "Connexion avec passkey"
 msgid "login_with_password"
 msgstr "Connexion avec mot de passe"
 
-#: templates/passkeys/register_finish.html:5
-#: templates/passkeys/register_start.html:5
-msgid "title_create_passkey"
-msgstr "Créer une passkey"
+#: templates/passkeys/partials/passkeys_list.html:7
+msgid "column_title_added"
+msgstr "Ajouté"
 
-#: templates/passkeys/register_finish.html:7
-msgid "passkey_created"
-msgstr "Passkey créée."
+#: templates/passkeys/partials/passkeys_list.html:7
+msgid "column_title_last_used"
+msgstr "Dernière utilisation"
 
-#: templates/passkeys/register_finish.html:9
-msgid "back_to_iou"
-msgstr "Retourner à IOU"
+#: templatetags/passkey_filters.py:15
+msgid "passkey_delete_confirm_message"
+msgstr "Supprimer la passkey ajoutée le {0} ({1}) ?"
 
-#: templates/passkeys/register_start.html:19
-msgid "create_passkey_description"
-msgstr "Créer une passkey pour vous connecter sans mot de passe."
+#: templatetags/passkey_filters.py:20
+msgid "passkey_never_used"
+msgstr "Jamais utilisée"
 
-#: templates/passkeys/register_start.html:24
-msgid "btn_create_passkey"
-msgstr "Créer"
+#: templatetags/passkey_filters.py:31
+msgid "passkey_never"
+msgstr "Jamais"

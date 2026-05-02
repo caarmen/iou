@@ -39,7 +39,7 @@
   <input type="hidden" name="next" value="{%url 'passkeys:login-start' %}">
   <button class="button--small" type="submit">{% translate "Log out" %}</button>
 </form>
-<a href="{%url 'passkeys:register-start' %}">
-  <button class="button--small">{% translate "create_passkey" %}</button>
+<a href="{%url 'passkeys:index' %}">
+  <button class="button--small">{% translate "manage_passkeys" %}</button>
 </a>
 {% endblock%}

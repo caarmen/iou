@@ -5,9 +5,9 @@ from . import views
 app_name = "passkeys"
 urlpatterns = [
     path(
-        "register-start/",
-        views.register_start,
-        name="register-start",
+        "",
+        views.index,
+        name="index",
     ),
     path(
         "register-finish/",
@@ -23,5 +23,10 @@ urlpatterns = [
         "login-finish/",
         views.login_finish,
         name="login-finish",
+    ),
+    path(
+        "delete/<str:credential_id>/",
+        views.delete,
+        name="delete",
     ),
 ]

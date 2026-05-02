@@ -61,8 +61,29 @@ li {
     padding-bottom: 6px;
 }
 
-li:nth-child(odd) {
+li:nth-child(odd), tr:nth-child(even) {
     backdrop-filter: brightness(var(--li-odd-child-brightness));
+}
+
+.material-icon button {
+    background-color: transparent;
+    border-style: none;
+    color: var(--color)
+}
+
+table {
+    border-spacing: 0px;
+}
+td + td, th + th {
+    padding-left: 1em;
+}
+
+th {
+    text-align: start;
+}
+
+td {
+    font-size: 0.9em;
 }
 
 li form {

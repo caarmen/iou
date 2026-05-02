@@ -20,11 +20,11 @@ def test_passkey_register_start_unauthenticated():
     Then the user is redirected to login.
     """
     client = Client()
-    response = client.get(reverse("passkeys:register-start"))
+    response = client.get(reverse("passkeys:index"))
     assert response.status_code == 302
     assert (
         response.url
-        == f"{reverse('passkeys:login-start')}?next={reverse('passkeys:register-start')}"
+        == f"{reverse('passkeys:login-start')}?next={reverse('passkeys:index')}"
     )
 
 
@@ -62,7 +62,7 @@ def test_passkey_register(
     assert Credential.objects.count() == 0
 
     # Step 1: start the registration flow.
-    response_start = client.get(reverse("passkeys:register-start"))
+    response_start = client.get(reverse("passkeys:index"))
     assert response_start.status_code == 200
 
     # Check that the registration flow contains attributes for the user.
@@ -98,4 +98,5 @@ def test_passkey_register(
     assert created_credential.user == user
     assert created_credential.credential_id == bytes_to_base64url(fake_cred_id)
     assert created_credential.sign_count == 0
-    assert response_finish.status_code == 200
+    assert response_finish.status_code == 302
+    assert response_finish.url == reverse("passkeys:index")

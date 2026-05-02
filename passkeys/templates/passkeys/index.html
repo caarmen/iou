@@ -1,0 +1,57 @@
+{% extends 'iou/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{%block title %}{% translate "passkeys_list_title" %}{%endblock%}
+{%block head%}
+<script>
+  document.addEventListener('htmx:confirm', function(evt){
+    if (!evt.detail.question) return;
+    evt.preventDefault();
+    const dialog = document.getElementById('dialogBox');
+    dialog.querySelector(".dialog--message").textContent = evt.detail.question;
+    dialog.querySelector("#cancel").onclick = () => dialog.close();
+    dialog.querySelector("#submit").onclick = () => {
+      dialog.close();
+      evt.detail.issueRequest(true);  // true to skip the built-in window.confirm()
+    }
+    dialog.showModal();
+  })
+</script>
+{% endblock%}
+{%block content%}
+  {{options | json_script:"parse_options"}}
+  <script>
+    async function onClickRegister(event) {
+      const credential = await navigator.credentials.create({
+        publicKey: PublicKeyCredential.parseCreationOptionsFromJSON(
+          JSON.parse(document.getElementById('parse_options').textContent)
+        )
+      });
+      event.target.form.credential_json.value = JSON.stringify(credential.toJSON())
+      event.target.form.submit();
+    }
+  </script>
+{% translate "passkeys_description" %}
+{% include "iou/spinner.html" %}
+<dialog id="dialogBox" class="dialog-box">
+  <div class="dialog--message"></div>
+  <div class="button-bar">
+    <button id="cancel">{% translate "dialog_cancel" %}</button>
+    <button id="submit">{% translate "dialog_ok" %}</button>
+  </div>
+</dialog>
+<h2>{% translate "passkeys_list_title" %}</h2>
+{% include "passkeys/partials/passkeys_list.html" %}
+<form action="{% url 'passkeys:register-finish' %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="credential_json"/>
+  <button type="button" onclick="onClickRegister(event)">
+    {% translate "btn_create_passkey" %}
+  </button>
+</form>
+<hr>
+<p>
+    <a href="{% url 'iou:index'%}"><button>{%translate "back_to_iou" %}</button></a>
+</p>
+{%endblock%}

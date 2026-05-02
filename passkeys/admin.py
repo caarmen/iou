@@ -9,6 +9,7 @@ class CredentialAdmin(admin.ModelAdmin):
         "credential_id",
         "public_key",
         "sign_count",
+        "last_used_at",
         "created_at",
     )
 
